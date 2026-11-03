@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "77940259-1f65-4bf6-bd37-874ca7d29b4d",
+  "status": "current",
+  "command": "deliver",
+  "type": "dataflow",
+  "input": "/Users/hungnpv/Downloads/Sunext/Sunext-Agent-GG/dong-phuc-hoa-tay-mini-erp/sources/06-hoa-tay-gop-mua-vai-tinh-gia-thanh-lo-dataflow.json",
+  "output": "/Users/hungnpv/Downloads/Sunext/Sunext-Agent-GG/dong-phuc-hoa-tay-mini-erp/06-hoa-tay-gop-mua-vai-tinh-gia-thanh-lo-dataflow.html",
+  "specification": {
+    "sha256": "b8387e1d4b5bfbda31f3d12dd95597c9fdf83482951673e13e70a8146b5d0564",
+    "bytes": 8574
+  },
+  "artifact": {
+    "sha256": "c74aecd2be294501794cd3696e08c1cace8c4e1871f7fba3605ad153314f807a",
+    "bytes": 832662
+  }
+}

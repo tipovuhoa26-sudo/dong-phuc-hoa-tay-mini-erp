@@ -1,0 +1,202 @@
+{
+  "schema_version": 3,
+  "diagram_type": "lifecycle",
+  "meta": {
+    "title": "Vòng Đời Đơn Hàng Đa Mẫu & Cơ Chế \"Khóa Cứng Nút Sửa Của Kinh Doanh\" Khi Đã Xuống Xưởng (SV-24)",
+    "output": "dong-phuc-hoa-tay-mini-erp/04-hoa-tay-vong-doi-don-hang-7-trang-thai-lifecycle.html",
+    "quality_profile": "showcase",
+    "views": [
+      {
+        "id": "bay-trang-thai-chinh",
+        "label": "1. Mạch Chuẩn 4 Cột Trạng Thái Đơn Hàng",
+        "focus": [
+          "st1-hoi-mua-bao-gia",
+          "st2-coc-khoa-sua-don",
+          "st3-cat-may-qc-9buoc",
+          "st4-giao-hang-gia-lo"
+        ],
+        "note": "Mạch trạng thái chính của đơn đặt may đồng phục trên Hoa Tay Mini-ERP từ lúc khách hỏi mua đến khi quyết toán lãi lỗ lô."
+      },
+      {
+        "id": "chot-chan-va-ngoai-le",
+        "label": "2. Duyệt Giá, Xin Sửa Lưu Vết & Sửa Lỗi QC",
+        "focus": [
+          "st1-hoi-mua-bao-gia",
+          "ex-duyet-gia-dac-biet",
+          "st2-coc-khoa-sua-don",
+          "ex-xin-sua-luu-vet",
+          "st3-cat-may-qc-9buoc",
+          "ex-lenh-sua-qc",
+          "st4-giao-hang-gia-lo",
+          "ex-bbnt-vietqr-24h"
+        ],
+        "note": "Kiểm soát chặt các tình huống phát sinh: giảm giá ngoài khung, khách xin đổi size khi đã xuống xưởng, áo lỗi QC và nhắc BBNT 24h."
+      }
+    ]
+  },
+  "mainPath": [
+    "st1-hoi-mua-bao-gia",
+    "st2-coc-khoa-sua-don",
+    "st3-cat-may-qc-9buoc",
+    "st4-giao-hang-gia-lo"
+  ],
+  "states": [
+    {
+      "id": "st1-hoi-mua-bao-gia",
+      "type": "start",
+      "label": "1. Hỏi Mua & Báo Giá",
+      "sublabel": "Quét QR & Tra Giao <5p",
+      "tag": "CHẶNG 1 (B01–B05)",
+      "step": "01"
+    },
+    {
+      "id": "st2-coc-khoa-sua-don",
+      "type": "decision",
+      "label": "2. Đã Cọc & KHÓA SỬA",
+      "sublabel": "Tự Sinh Lệnh SX & Lịch 3T",
+      "tag": "CHỐT CHẶN 3 & 4 (B06–B11)",
+      "step": "02"
+    },
+    {
+      "id": "st3-cat-may-qc-9buoc",
+      "type": "active",
+      "label": "3. Đang Cắt May & QC",
+      "sublabel": "7 Tổ & Final QC 100%",
+      "tag": "CHẶNG 3 (B12–B15)",
+      "step": "03"
+    },
+    {
+      "id": "st4-giao-hang-gia-lo",
+      "type": "success",
+      "label": "4. Đã Giao & Chốt Lãi",
+      "sublabel": "BBNT, VietQR & Giá Lô",
+      "tag": "CHẶNG 4 (B16–B20)",
+      "step": "04"
+    },
+    {
+      "id": "ex-duyet-gia-dac-biet",
+      "type": "decision",
+      "label": "Duyệt Giá Đặc Biệt",
+      "sublabel": "Trưởng Phòng / GĐ Duyệt",
+      "tag": "CHỐT CHẶN 2 (SV-24)"
+    },
+    {
+      "id": "ex-xin-sua-luu-vet",
+      "type": "external",
+      "label": "Xin Sửa Có Lưu Vết",
+      "sublabel": "Quản Lý Duyệt Đổi Size",
+      "tag": "CHỐNG CẮT NHẦM MẪU"
+    },
+    {
+      "id": "ex-lenh-sua-qc",
+      "type": "neutral",
+      "label": "Lệnh Sửa Áo Lỗi QC",
+      "sublabel": "Tách Riêng Hạn 1–2 Ngày",
+      "tag": "CHUẨN ĐẠT ≥95% (SV-38)"
+    },
+    {
+      "id": "ex-bbnt-vietqr-24h",
+      "type": "active",
+      "label": "Tự Nhắc BBNT & CSKH",
+      "sublabel": "Xuất HĐ 24h & Gọi 3 Mốc",
+      "tag": "SV-05 · SV-28 · SV-29"
+    }
+  ],
+  "transitions": [
+    {
+      "id": "tr-1-2",
+      "from": "st1-hoi-mua-bao-gia",
+      "to": "st2-coc-khoa-sua-don",
+      "label": "KT xác nhận cọc",
+      "variant": "emphasis"
+    },
+    {
+      "id": "tr-2-3",
+      "from": "st2-coc-khoa-sua-don",
+      "to": "st3-cat-may-qc-9buoc",
+      "label": "Nhận vải & cắt",
+      "variant": "emphasis"
+    },
+    {
+      "id": "tr-3-4",
+      "from": "st3-cat-may-qc-9buoc",
+      "to": "st4-giao-hang-gia-lo",
+      "label": "Final QC 100%",
+      "variant": "emphasis"
+    },
+    {
+      "id": "tr-1-gia",
+      "from": "st1-hoi-mua-bao-gia",
+      "to": "ex-duyet-gia-dac-biet",
+      "label": "Giá vượt khung",
+      "variant": "security"
+    },
+    {
+      "id": "tr-gia-1",
+      "from": "ex-duyet-gia-dac-biet",
+      "to": "st1-hoi-mua-bao-gia",
+      "label": "Bấm duyệt giá",
+      "variant": "emphasis"
+    },
+    {
+      "id": "tr-2-sua",
+      "from": "st2-coc-khoa-sua-don",
+      "to": "ex-xin-sua-luu-vet",
+      "label": "Xin đổi size",
+      "variant": "security"
+    },
+    {
+      "id": "tr-sua-2",
+      "from": "ex-xin-sua-luu-vet",
+      "to": "st2-coc-khoa-sua-don",
+      "label": "Duyệt & báo cắt",
+      "variant": "security"
+    },
+    {
+      "id": "tr-3-qc",
+      "from": "st3-cat-may-qc-9buoc",
+      "to": "ex-lenh-sua-qc",
+      "label": "Phát hiện lỗi",
+      "variant": "default"
+    },
+    {
+      "id": "tr-qc-3",
+      "from": "ex-lenh-sua-qc",
+      "to": "st3-cat-may-qc-9buoc",
+      "label": "Sửa xong 1–2 ngày",
+      "variant": "emphasis"
+    },
+    {
+      "id": "tr-4-bbnt",
+      "from": "st4-giao-hang-gia-lo",
+      "to": "ex-bbnt-vietqr-24h",
+      "label": "Tự sinh việc KT",
+      "variant": "default"
+    },
+    {
+      "id": "tr-bbnt-4",
+      "from": "ex-bbnt-vietqr-24h",
+      "to": "st4-giao-hang-gia-lo",
+      "label": "Thu đủ công nợ",
+      "variant": "dashed"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "rose",
+      "title": "Vì Sao Phải \"Khóa Cứng Nút Sửa Đơn Của Kinh Doanh\" Ngay Khi Nhận Cọc?",
+      "items": [
+        "Nỗi đau lớn nhất hiện nay (theo khảo sát chị Liên ngày 07/09/2026): Khi khách nhắn Zalo xin đổi số lượng size hoặc dời vị trí thêu logo, kinh doanh sửa trên file của mình nhưng bảng tính ở xưởng chưa kịp sửa theo, dẫn đến Tổ cắt cắt nhầm bản cũ.",
+        "Trên Hoa Tay Mini-ERP: Ngay khi Kế toán xác nhận cọc (Trạng thái 2), nút sửa đơn của NVKD bị khóa cứng. Mọi thay đổi sau đó phải qua bước 'Xin sửa có lưu vết', có quản lý phê duyệt và báo thẳng xuống màn hình Tổ cắt."
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Tự Động Nhắc Đòi Áo Mẫu Cho Mượn & Tự Nhắc Xuất Hóa Đơn Khi Giao Hàng",
+      "items": [
+        "Ở Chặng 1: Khi khách mượn áo mẫu có sẵn về thử, hệ thống gắn đồng hồ đếm ngược tự nhắc NVKD đòi lại áo mẫu đúng hạn hoặc cấn trừ tiền mẫu vào đơn hàng (SV-27).",
+        "Ở Chặng 4: Ngay giây phút đơn hàng chuyển sang 'Đã giao thành công', hệ thống tự động tạo việc nhắc Kế toán xuất Hóa đơn, BBNT và ĐNTT kèm mã VietQR trong vòng 24 giờ (SV-28)."
+      ]
+    }
+  ]
+}

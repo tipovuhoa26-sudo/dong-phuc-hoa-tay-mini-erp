@@ -1,0 +1,146 @@
+{
+  "schema_version": 1,
+  "diagram_type": "timeline",
+  "meta": {
+    "title": "Lộ Trình 34 Tuần (50,2 Ngày Công) & 9 Đợt Thanh Toán Theo Kết Quả Nghiệm Thu (QT-2026-HOATAY-03)",
+    "output": "dong-phuc-hoa-tay-mini-erp/09-hoa-tay-lo-trinh-34-tuan-9-dot-timeline.html",
+    "quality_profile": "showcase",
+    "evidence": "illustrative",
+    "timezone": "Asia/Ho_Chi_Minh",
+    "views": [
+      {
+        "id": "giai-doan-1-den-5-nen-tang-crm-xuong",
+        "label": "1. Đợt 1 -> Đợt 5: M0, CRM, Lịch & Xưởng",
+        "focus": [
+          "dot-1-hop-dong",
+          "dot-2-m0-m1",
+          "dot-3-m2-m3",
+          "dot-4-m6-lich",
+          "dot-5-m7-m8"
+        ],
+        "note": "5 đợt đầu (59% ngân sách): Chốt biểu mẫu M0, nền 9 vai trò (M1), CRM & khóa sửa đơn (M2–M3), tra giao <5p (M6) và phiếu 7 tổ + QC (M7–M8)."
+      },
+      {
+        "id": "giai-doan-6-den-9-mua-hang-ke-toan-ai-golive",
+        "label": "2. Đợt 6 -> Đợt 9: Mua Vải, Kế Toán & Go-Live",
+        "focus": [
+          "dot-6-m9-m4",
+          "dot-7-m10-fast",
+          "dot-8-m5-ai",
+          "dot-9-m11-golive"
+        ],
+        "note": "4 đợt cuối (41% ngân sách): Gộp mua vải & nhắc nợ (M9, M4), Kế toán thay FAST (M10), Trợ lý AI ≥90% (M5) và chuyển GetFly + đào tạo (M11)."
+      }
+    ]
+  },
+  "layout": {
+    "width": 780,
+    "breaks": "auto"
+  },
+  "lanes": [
+    {
+      "id": "lane-payment-gate",
+      "label": "Cổng Nghiệm Thu & Giải Ngân 9 Đợt"
+    },
+    {
+      "id": "lane-govap-crm-ai",
+      "label": "Văn Phòng Gò Vấp: CRM, Mua Vải & AI"
+    },
+    {
+      "id": "lane-hocmon-acct",
+      "label": "Xưởng Hóc Môn & Phòng Kế Toán"
+    }
+  ],
+  "events": [
+    {
+      "id": "dot-1-hop-dong",
+      "at": "2026-11-09T09:00:00+07:00",
+      "title": "Đợt 1 (15% · 18,22 Tr): Ký HĐ & M0",
+      "detail": "Thanh toán 16.561.500đ trước thuế (18.217.650đ gồm VAT) ngay sau khi ký hợp đồng để họp khảo sát M0 (2 giờ) và dựng nền M1.",
+      "lane": "lane-payment-gate",
+      "kind": "action"
+    },
+    {
+      "id": "dot-2-m0-m1",
+      "at": "2026-12-01T09:00:00+07:00",
+      "title": "Đợt 2 (10% · 12,15 Tr): Chốt M0 & M1",
+      "detail": "Chốt toàn bộ biểu mẫu in ấn, công thức giá thành với chị Liên (M0) và chạy nền tảng phân quyền 9 vị trí trên điện thoại (M1 · 12.145.100đ gồm VAT).",
+      "lane": "lane-govap-crm-ai",
+      "kind": "change"
+    },
+    {
+      "id": "dot-3-m2-m3",
+      "at": "2026-12-28T09:00:00+07:00",
+      "title": "Đợt 3 (12% · 14,57 Tr): CRM & Đơn M2–M3",
+      "detail": "Phòng Kinh doanh dùng được hồ sơ khách, quét QR mẫu áo (M2), báo giá đa phiên bản, hợp đồng, mẫu mượn và khóa sửa đơn (M3 · 14.574.120đ gồm VAT).",
+      "lane": "lane-govap-crm-ai",
+      "kind": "recovery"
+    },
+    {
+      "id": "dot-4-m6-lich",
+      "at": "2027-01-25T09:00:00+07:00",
+      "title": "Đợt 4 (10% · 12,15 Tr): Xếp Lịch M6 <5p",
+      "detail": "Xưởng dùng được bộ xếp lịch 3 nhóm thợ (ưu tiên thợ nhà) và Kinh doanh tự bấm xem ngày giao khả thi dưới 5 phút (M6 · 12.145.100đ gồm VAT).",
+      "lane": "lane-hocmon-acct",
+      "kind": "action"
+    },
+    {
+      "id": "dot-5-m7-m8",
+      "at": "2027-02-25T09:00:00+07:00",
+      "title": "Đợt 5 (12% · 14,57 Tr): 7 Tổ & QC M7–M8",
+      "detail": "Chạy Lệnh SX tự động, bảng 3 tháng, Phiếu triển khai 7 tổ, Phiếu cắt (M7) và xuất vải, chấm QC 9 bước trên điện thoại (M8 · 14.574.120đ gồm VAT).",
+      "lane": "lane-hocmon-acct",
+      "kind": "recovery"
+    },
+    {
+      "id": "dot-6-m9-m4",
+      "at": "2027-03-29T09:00:00+07:00",
+      "title": "Đợt 6 (10% · 12,15 Tr): Mua Vải & Nợ M9, M4",
+      "detail": "Mua hàng dùng được duyệt mua vải & gộp đơn đặt NCC (M9), cùng tính năng tự nhắc việc Kế toán khi giao xong và tính tuổi nợ (M4 · 12.145.100đ gồm VAT).",
+      "lane": "lane-govap-crm-ai",
+      "kind": "change"
+    },
+    {
+      "id": "dot-7-m10-fast",
+      "at": "2027-05-03T09:00:00+07:00",
+      "title": "Đợt 7 (13% · 15,79 Tr): Kế Toán Thay FAST M10",
+      "detail": "Chị Liên nghiệm thu phân hệ Kế toán quản trị, mã VietQR, tính giá thành lô khớp số thực tế và xuất 8 báo cáo thay thế FAST (M10 · 15.788.630đ gồm VAT).",
+      "lane": "lane-hocmon-acct",
+      "kind": "recovery"
+    },
+    {
+      "id": "dot-8-m5-ai",
+      "at": "2027-05-31T09:00:00+07:00",
+      "title": "Đợt 8 (8% · 9,72 Tr): Trợ Lý AI & KPI M5",
+      "detail": "Giám đốc nghiệm thu Trợ lý AI hỏi đáp báo cáo tiếng Việt (đạt ≥90% trên 30 câu hỏi mẫu), báo cáo cuối tháng và thẻ điểm KPI (M5 · 9.716.080đ gồm VAT).",
+      "lane": "lane-govap-crm-ai",
+      "kind": "action"
+    },
+    {
+      "id": "dot-9-m11-golive",
+      "at": "2027-06-28T09:00:00+07:00",
+      "title": "Đợt 9 (10% · 12,15 Tr): GetFly & Bàn Giao M11",
+      "detail": "Chuyển toàn bộ khách & đơn đang mở từ GetFly sang, đào tạo 4 nhóm nhân sự kèm video 1–3 phút, bàn giao chính thức & mở bảo hành 3 tháng (12.145.100đ gồm VAT).",
+      "lane": "lane-payment-gate",
+      "kind": "recovery"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "emerald",
+      "title": "Nguyên Tắc Bảo Vệ Nhà Đầu Tư: Làm Xong Phần Nào, Chạy Đúng Mới Thanh Toán Phần Đó",
+      "items": [
+        "Tổng chi phí trọn gói 12 hạng mục (50,2 ngày công kỹ sư, đơn giá ưu đãi 2.200.000đ/ngày công): 110.410.000 VNĐ trước thuế · 11.041.000 VNĐ thuế GTGT 10% · Tổng 121.451.000 VNĐ sau thuế.",
+        "Chia nhỏ thành 09 đợt thanh toán gắn chặt với điều kiện nghiệm thu thực tế. Khi khởi động dự án (Đợt 1), Hoa Tay chỉ thanh toán 16.561.500đ trước thuế (18.217.650đ gồm VAT)."
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "Triển Khai Cuốn Chiếu Êm Ái — Không Làm Gián Đoạn Đơn Hàng Đang May",
+      "items": [
+        "Trong suốt 34 tuần, hệ thống được đưa vào vận hành cuốn chiếu từng hợp phần để văn phòng Gò Vấp và xưởng Hóc Môn làm quen dần mà không ảnh hưởng tới các đơn hàng đang sản xuất.",
+        "Đi kèm 4 buổi đào tạo trực tiếp cho 4 nhóm nhân sự, bộ video hướng dẫn ngắn (1–3 phút/video) và cam kết bảo hành sửa lỗi miễn phí 03 tháng sau bàn giao cuối cùng."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,150 @@
+{
+  "schema_version": 1,
+  "diagram_type": "tree",
+  "meta": {
+    "title": "Bản Đồ Phân Quyền 9 Vị Trí Trên Điện Thoại & Máy Tính (SV-02, SV-18): Mỗi Sáng Mở Máy Thấy Gì?",
+    "output": "dong-phuc-hoa-tay-mini-erp/07-hoa-tay-9-vi-tri-phan-quyen-mobile-tree.html",
+    "quality_profile": "showcase",
+    "views": [
+      {
+        "id": "khoi-dieu-hanh-kinh-doanh-ke-toan",
+        "label": "1. Văn Phòng Gò Vấp: Giám Đốc, KD, Mua & KT",
+        "focus": [
+          "root-hoatay",
+          "grp-dieu-hanh-kd",
+          "grp-mua-ke-toan",
+          "r1-giam-doc",
+          "r2-tp-kinh-doanh",
+          "r3-nv-kinh-doanh",
+          "r6-mua-hang-kho",
+          "r9-ke-toan-lien"
+        ],
+        "note": "5 vai trò tại Gò Vấp: Giám đốc hỏi AI tiếng Việt; TP Kinh doanh duyệt giá; NVKD tra giao <5p (khóa sửa đơn); Mua hàng gộp vải; KT tính lãi."
+      },
+      {
+        "id": "khoi-xuong-hoc-mon-rap-qc",
+        "label": "2. Xưởng Hóc Môn: Rập, KHSX, 7 Tổ SX & QC",
+        "focus": [
+          "root-hoatay",
+          "grp-ky-thuat-khsx",
+          "grp-to-sx-qc",
+          "r4-thiet-ke-rap",
+          "r5-gd-xuong-khsx",
+          "r7-to-truong-sx",
+          "r8-kiem-hang-qc"
+        ],
+        "note": "4 vai trò tại Hóc Môn: Chỉ thấy mẫu áo, bảng size và quy cách kỹ thuật của tổ mình; tuyệt đối không thấy giá bán hay SĐT khách hàng."
+      }
+    ]
+  },
+  "layout": {
+    "direction": "down",
+    "gapX": 16,
+    "gapY": 54,
+    "nodeW": 112,
+    "nodeMaxW": 126
+  },
+  "nodes": [
+    {
+      "id": "root-hoatay",
+      "label": "Hoa Tay Mini-ERP",
+      "sublabel": "1 Sổ Gốc · 9 Vai Trò"
+    },
+    {
+      "id": "grp-dieu-hanh-kd",
+      "parent": "root-hoatay",
+      "label": "Điều Hành & KD",
+      "sublabel": "Gò Vấp (M2–M5)"
+    },
+    {
+      "id": "grp-ky-thuat-khsx",
+      "parent": "root-hoatay",
+      "label": "Kỹ Thuật & KHSX",
+      "sublabel": "Điều Độ (M6–M8)"
+    },
+    {
+      "id": "grp-to-sx-qc",
+      "parent": "root-hoatay",
+      "label": "Xưởng & Kiểm QC",
+      "sublabel": "Hóc Môn (M8)"
+    },
+    {
+      "id": "grp-mua-ke-toan",
+      "parent": "root-hoatay",
+      "label": "Mua Hàng & KT",
+      "sublabel": "Vật Tư & Lãi Lỗ (M9–M10)"
+    },
+    {
+      "id": "r1-giam-doc",
+      "parent": "grp-dieu-hanh-kd",
+      "label": "1. Giám Đốc (CEO)",
+      "sublabel": "Hỏi AI & Duyệt Chi"
+    },
+    {
+      "id": "r2-tp-kinh-doanh",
+      "parent": "grp-dieu-hanh-kd",
+      "label": "2. TP Kinh Doanh",
+      "sublabel": "Phễu & Duyệt Giá"
+    },
+    {
+      "id": "r3-nv-kinh-doanh",
+      "parent": "grp-dieu-hanh-kd",
+      "label": "3. NV Kinh Doanh",
+      "sublabel": "QR, Giao <5p & HĐ"
+    },
+    {
+      "id": "r4-thiet-ke-rap",
+      "parent": "grp-ky-thuat-khsx",
+      "label": "4. Thiết Kế & Rập",
+      "sublabel": "Mẫu, Rập & Định Mức"
+    },
+    {
+      "id": "r5-gd-xuong-khsx",
+      "parent": "grp-ky-thuat-khsx",
+      "label": "5. GĐ Xưởng/KHSX",
+      "sublabel": "Lịch 3T & 3 Nhóm Thợ"
+    },
+    {
+      "id": "r7-to-truong-sx",
+      "parent": "grp-to-sx-qc",
+      "label": "7. Tổ Trưởng SX",
+      "sublabel": "Nhận Cắt 24h & Bấm"
+    },
+    {
+      "id": "r8-kiem-hang-qc",
+      "parent": "grp-to-sx-qc",
+      "label": "8. Kiểm Hàng QC",
+      "sublabel": "Chấm 9 Bước & Ảnh"
+    },
+    {
+      "id": "r6-mua-hang-kho",
+      "parent": "grp-mua-ke-toan",
+      "label": "6. Mua Hàng & Kho",
+      "sublabel": "Gộp Vải & Xuất Kho"
+    },
+    {
+      "id": "r9-ke-toan-lien",
+      "parent": "grp-mua-ke-toan",
+      "label": "9. Kế Toán (Liên)",
+      "sublabel": "VietQR & Giá Lô"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Giao Diện Điện Thoại Gọn Gàng (SV-18): Ai Làm Việc Nấy Chỉ Với 1–2 Chạm",
+      "items": [
+        "Ghim trực tiếp lên màn hình chính điện thoại như ứng dụng (PWA). Mỗi sáng mở máy, từng vị trí chỉ nhìn thấy đúng danh sách việc cần làm trong ngày của mình.",
+        "Tổ trưởng Cắt - May - Hoàn thành (Vị trí 7) và Nhân viên QC (Vị trí 8) chỉ cần bấm 1–2 chạm trên điện thoại là tiến độ nhảy tức thời về màn hình văn phòng Gò Vấp."
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "Bảo Mật Tới Từng Ô Dữ Liệu & Nhật Ký Lưu Vết Chống Sửa Ngầm (SV-02)",
+      "items": [
+        "Tài khoản Kỹ thuật Rập (Vị trí 4) và Tổ trưởng Xưởng (Vị trí 7) chỉ thấy hình mẫu áo, bảng size và quy cách may; tuyệt đối không thấy giá bán, chiết khấu hay SĐT khách hàng.",
+        "Tài khoản NVKD (Vị trí 3) chỉ xem được khách của mình và bị khóa cứng nút sửa đơn ngay khi đơn xuống xưởng; không ai ở xưởng tự ý xóa được lịch sử chấm lỗi của QC (Vị trí 8)."
+      ]
+    }
+  ]
+}

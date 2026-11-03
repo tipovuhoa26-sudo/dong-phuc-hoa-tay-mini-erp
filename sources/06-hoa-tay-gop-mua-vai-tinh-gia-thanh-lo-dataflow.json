@@ -1,0 +1,280 @@
+{
+  "schema_version": 1,
+  "diagram_type": "dataflow",
+  "meta": {
+    "title": "Dòng Chảy Vật Tư & Tiền Tệ: Từ Gộp Đơn Mua Vải (SV-40), Mã VietQR Đến Giá Thành Lô Thay FAST (SV-45)",
+    "output": "dong-phuc-hoa-tay-mini-erp/06-hoa-tay-gop-mua-vai-tinh-gia-thanh-lo-dataflow.html",
+    "quality_profile": "showcase",
+    "views": [
+      {
+        "id": "gop-mua-vai-va-cap-phat-npl",
+        "label": "1. Tách Định Mức, Gộp Mua Vải & Xuất Tổ Cắt",
+        "focus": [
+          "in-lenh-sx-npl",
+          "in-cap-phat-cat",
+          "proc-gop-vai-ncc",
+          "proc-gia-thanh-lo",
+          "db-po-npl-don",
+          "db-gia-von-lo",
+          "out-dat-ncc-chi"
+        ],
+        "note": "Tự tách vải cần mua từ Lệnh SX, cộng gộp cùng mã vải của nhiều đơn đặt NCC giá sỉ (vẫn truy vết được đơn) và hạch toán vải thừa/cấp bù."
+      },
+      {
+        "id": "vietqr-tuoi-no-va-thay-the-fast",
+        "label": "2. VietQR, Tuổi Nợ & Tính Lãi Lô (Thay FAST)",
+        "focus": [
+          "in-coc-giao-hang",
+          "in-cap-phat-cat",
+          "proc-vietqr-bbnt",
+          "proc-gia-thanh-lo",
+          "db-cong-no-vietqr",
+          "db-gia-von-lo",
+          "out-8-bao-cao-fast",
+          "out-ai-chat-kpi"
+        ],
+        "note": "Giao xong tự nhắc xuất BBNT và ĐNTT kèm mã VietQR, tự tính tuổi nợ, tự tính giá thành lô khớp chị Liên và xuất 8 báo cáo thay thế FAST."
+      }
+    ]
+  },
+  "stages": [
+    {
+      "label": "01 · Đầu Vào Từ Đơn Bán & Xưởng May"
+    },
+    {
+      "label": "02 · Gộp Mua Vải, VietQR & Giá Thành"
+    },
+    {
+      "label": "03 · Sổ Gốc Mua Hàng, Công Nợ & Lô"
+    },
+    {
+      "label": "04 · Đặt NCC, 8 Báo Cáo & Trợ Lý AI"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "in-lenh-sx-npl",
+      "type": "frontend",
+      "label": "Nhu Cầu Vải & Nút",
+      "sublabel": "Tách Từ Lệnh SX (B10)",
+      "tag": "SV-39 (THAY LỘI ZALO)",
+      "stage": 0,
+      "row": 0
+    },
+    {
+      "id": "in-coc-giao-hang",
+      "type": "frontend",
+      "label": "Đơn Cọc & Đã Giao",
+      "sublabel": "Mốc B06 & B16–B17",
+      "tag": "SV-28 · SV-42",
+      "stage": 0,
+      "row": 2
+    },
+    {
+      "id": "in-cap-phat-cat",
+      "type": "frontend",
+      "label": "Xuất Vải & Công Thợ",
+      "sublabel": "Cấp Phát, Trả Dư & Bù",
+      "tag": "SV-37 · SV-46",
+      "stage": 0,
+      "row": 1
+    },
+    {
+      "id": "proc-gop-vai-ncc",
+      "type": "backend",
+      "label": "Gộp Vải Nhiều Đơn",
+      "sublabel": "Duyệt Online & Gom NCC",
+      "tag": "CHỐT CHẶN 5 (SV-40)",
+      "stage": 1,
+      "row": 0
+    },
+    {
+      "id": "proc-vietqr-bbnt",
+      "type": "security",
+      "label": "Sinh BBNT & VietQR",
+      "sublabel": "Trừ Cọc & Tính Tuổi Nợ",
+      "tag": "SV-28 · SV-29 · SV-42",
+      "stage": 1,
+      "row": 2
+    },
+    {
+      "id": "proc-gia-thanh-lo",
+      "type": "backend",
+      "label": "Tính Giá Thành Lô",
+      "sublabel": "NPL + Công + Khấu Hao",
+      "tag": "CHUẨN CHỊ LIÊN (SV-45)",
+      "stage": 1,
+      "row": 1
+    },
+    {
+      "id": "db-po-npl-don",
+      "type": "database",
+      "label": "Sổ Mua Vải Theo Đơn",
+      "sublabel": "Nối Mã Vải Về Đơn Gốc",
+      "tag": "M9 DB (SV-16)",
+      "stage": 2,
+      "row": 0
+    },
+    {
+      "id": "db-cong-no-vietqr",
+      "type": "database",
+      "label": "Sổ Công Nợ & Thu",
+      "sublabel": "Phải Thu & Chiết Khấu",
+      "tag": "M4 · M10 DB (SV-43)",
+      "stage": 2,
+      "row": 2
+    },
+    {
+      "id": "db-gia-von-lo",
+      "type": "database",
+      "label": "Sổ Cái & Lãi Lỗ Lô",
+      "sublabel": "Bút Toán Tự Sinh 100%",
+      "tag": "M10 DB (SV-41 · SV-45)",
+      "stage": 2,
+      "row": 1
+    },
+    {
+      "id": "out-dat-ncc-chi",
+      "type": "external",
+      "label": "Đặt NCC & Duyệt Chi",
+      "sublabel": "Mua Giá Sỉ & Hẹn Vải Về",
+      "tag": "SV-39 · SV-44",
+      "stage": 3,
+      "row": 0
+    },
+    {
+      "id": "out-ai-chat-kpi",
+      "type": "cloud",
+      "label": "Trợ Lý AI & KPI",
+      "sublabel": "Hỏi Lãi Lỗ & Nhắc Nợ",
+      "tag": "M5 (SV-30 · SV-32)",
+      "stage": 3,
+      "row": 2
+    },
+    {
+      "id": "out-8-bao-cao-fast",
+      "type": "external",
+      "label": "08 Báo Cáo Quản Trị",
+      "sublabel": "Xuất PDF/Excel Thay FAST",
+      "tag": "M10 (SV-47)",
+      "stage": 3,
+      "row": 1
+    }
+  ],
+  "flows": [
+    {
+      "id": "fl-1",
+      "from": "in-lenh-sx-npl",
+      "to": "proc-gop-vai-ncc",
+      "label": "Đề nghị mua vải",
+      "classification": "Từ Lệnh SX",
+      "variant": "emphasis"
+    },
+    {
+      "id": "fl-2",
+      "from": "proc-gop-vai-ncc",
+      "to": "db-po-npl-don",
+      "label": "Gộp mã vải kỳ",
+      "classification": "SV-40 Gộp Đơn",
+      "variant": "emphasis"
+    },
+    {
+      "id": "fl-3",
+      "from": "db-po-npl-don",
+      "to": "out-dat-ncc-chi",
+      "label": "Đặt NCC & duyệt chi",
+      "classification": "PO & Thanh Toán",
+      "variant": "emphasis"
+    },
+    {
+      "id": "fl-4",
+      "from": "in-coc-giao-hang",
+      "to": "proc-vietqr-bbnt",
+      "label": "Báo cọc & đã giao",
+      "classification": "Sự Kiện Đơn",
+      "variant": "emphasis"
+    },
+    {
+      "id": "fl-5",
+      "from": "proc-vietqr-bbnt",
+      "to": "db-cong-no-vietqr",
+      "label": "Ghi thu & tuổi nợ",
+      "classification": "VietQR & Công Nợ",
+      "variant": "security"
+    },
+    {
+      "id": "fl-6",
+      "from": "db-cong-no-vietqr",
+      "to": "out-ai-chat-kpi",
+      "label": "Nhắc nợ & tính KPI",
+      "classification": "Tự Động Nhắc",
+      "variant": "default"
+    },
+    {
+      "id": "fl-7",
+      "from": "in-cap-phat-cat",
+      "to": "proc-gia-thanh-lo",
+      "label": "Vải thực & công thợ",
+      "classification": "Chi Phí Trực Tiếp",
+      "variant": "emphasis"
+    },
+    {
+      "id": "fl-8",
+      "from": "proc-gop-vai-ncc",
+      "to": "proc-gia-thanh-lo",
+      "label": "Giá mua vải theo đơn",
+      "classification": "Phân Bổ NPL",
+      "variant": "default"
+    },
+    {
+      "id": "fl-9",
+      "from": "proc-vietqr-bbnt",
+      "to": "proc-gia-thanh-lo",
+      "label": "Doanh thu & chiết khấu",
+      "classification": "Doanh Thu Thuần",
+      "variant": "default"
+    },
+    {
+      "id": "fl-10",
+      "from": "proc-gia-thanh-lo",
+      "to": "db-gia-von-lo",
+      "label": "Hạch toán giá lô",
+      "classification": "Khớp Chị Liên",
+      "variant": "emphasis"
+    },
+    {
+      "id": "fl-11",
+      "from": "db-gia-von-lo",
+      "to": "out-8-bao-cao-fast",
+      "label": "Xuất 8 báo cáo",
+      "classification": "Thay Thế FAST",
+      "variant": "emphasis"
+    },
+    {
+      "id": "fl-12",
+      "from": "db-gia-von-lo",
+      "to": "out-ai-chat-kpi",
+      "label": "AI đọc lãi lỗ lô",
+      "classification": "Báo Cáo Tiếng Việt",
+      "variant": "dashed"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Gộp Đơn Mua Vải Thông Minh (SV-40): Đặt NCC 1 Lần Nhưng Vẫn Biết Thuộc Đơn Nào",
+      "items": [
+        "Trước đây: Nếu có 5 đơn hàng cùng cần mua vải kaki trắng, nhân viên Mua hàng phải mở GetFly, File TĐSX và lội nhóm Zalo chuyển tiền rồi tự cộng tay mất 1–3 giờ.",
+        "Trên Hoa Tay Mini-ERP: Hệ thống tự cộng gộp cùng một mã vải của nhiều đơn để đặt NCC một lần cho được giá tốt, nhưng bấm vào bất kỳ dòng vải nào cũng biết ngay mua cho những đơn hàng nào."
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Thay Thế Hoàn Toàn Phần Mềm FAST Ở Mảng Kế Toán Quản Trị Nội Bộ (M10)",
+      "items": [
+        "Tự động gom các bút toán từ bán hàng, mua vải, cấp phát/trả vải thừa, công thợ và khấu hao máy móc để tính giá vốn và lãi ròng từng lô hàng khớp tuyệt đối công thức của chị Liên (SV-45).",
+        "Xuất trực tiếp 08 báo cáo kế toán quản trị ra PDF/Excel: Lãi lỗ, Cân đối kế toán, Cân đối thử, Sổ cái chung, Sổ cái đối tác, Tuổi nợ phải thu, Tuổi nợ phải trả và Lưu chuyển tiền tệ (SV-47)."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,259 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Bộ Khung Vận Hành \"4 Chặng Đường & 7 Chốt Chặn Tự Động\" (Stage-Gate Control B01–B20)",
+    "output": "dong-phuc-hoa-tay-mini-erp/02-hoa-tay-4-chang-7-chot-chan-workflow.html",
+    "quality_profile": "showcase",
+    "views": [
+      {
+        "id": "bon-chang-duong-chinh",
+        "label": "1. Mạch Chính 4 Chặng Đường (B01 -> B20)",
+        "focus": [
+          "c1-tiep-nhan-qr",
+          "c1-bao-gia-hd",
+          "c2-lenh-sx-3tho",
+          "c2-gop-mua-vai",
+          "c3-cat-may-qc8",
+          "c4-giao-vietqr-lai"
+        ],
+        "note": "Đường thẳng liên thông chuẩn SCOR từ lúc khách hỏi đặt 400 bộ đồng phục đến khi giao hàng, thu tiền VietQR và tính lãi lỗ từng lô."
+      },
+      {
+        "id": "bay-chot-chan-stage-gate",
+        "label": "2. Hệ Thống 7 Chốt Chặn Tự Động (Stage-Gate)",
+        "focus": [
+          "c2-lenh-sx-3tho",
+          "gate-1-4-khoa-don",
+          "gate-5-6-vai-cat",
+          "gate-7-final-qc",
+          "c3-cat-may-qc8"
+        ],
+        "note": "Bước trước làm chưa đủ hoặc chưa đúng thì phần mềm tự động khóa nút, chặn đứng lỗi quên việc, sót thông tin và cắt nhầm mẫu cũ."
+      }
+    ]
+  },
+  "lanes": [
+    {
+      "id": "lane-govap",
+      "label": "Văn Phòng Gò Vấp: Phòng Kinh Doanh, Báo Giá, Cọc VietQR & Kế Toán Quản Trị",
+      "variant": "normal"
+    },
+    {
+      "id": "lane-hocmon",
+      "label": "Xưởng May Hóc Môn & Mua Hàng: Lệnh SX, 3 Nhóm Thợ, Gộp Vải, 7 Tổ & QC",
+      "variant": "normal"
+    },
+    {
+      "id": "lane-gates",
+      "label": "Hệ Thống 7 Chốt Chặn Chất Lượng Tự Động (Jidoka / Stage-Gate Control)",
+      "variant": "exception"
+    }
+  ],
+  "phases": [
+    {
+      "id": "ph-chang-1",
+      "label": "1. Chặng 1 (B01–B06): Báo Giá & Nhận Cọc",
+      "fromCol": 0,
+      "toCol": 1,
+      "variant": "default"
+    },
+    {
+      "id": "ph-chang-2",
+      "label": "2. Chặng 2 (B07–B11): Xếp Lịch & Gộp Vải",
+      "fromCol": 2,
+      "toCol": 3,
+      "variant": "emphasis"
+    },
+    {
+      "id": "ph-chang-3-4",
+      "label": "3. Chặng 3 & 4 (B12–B20): Cắt May, QC & Lãi Lô",
+      "fromCol": 4,
+      "toCol": 5,
+      "variant": "security"
+    }
+  ],
+  "mainPath": [
+    "c1-tiep-nhan-qr",
+    "c1-bao-gia-hd",
+    "c2-lenh-sx-3tho",
+    "c2-gop-mua-vai",
+    "c3-cat-may-qc8",
+    "c4-giao-vietqr-lai"
+  ],
+  "nodes": [
+    {
+      "id": "c1-tiep-nhan-qr",
+      "lane": "lane-govap",
+      "col": 0,
+      "type": "frontend",
+      "label": "Hỏi Mua & Quét QR",
+      "sublabel": "Tra Ngày Giao <5 Phút",
+      "tag": "BƯỚC B01–B03"
+    },
+    {
+      "id": "c1-bao-gia-hd",
+      "lane": "lane-govap",
+      "col": 1,
+      "type": "frontend",
+      "label": "Báo Giá & Cọc VietQR",
+      "sublabel": "Đơn Đa Mẫu & Điểm Nhận",
+      "tag": "BƯỚC B04–B06"
+    },
+    {
+      "id": "c2-lenh-sx-3tho",
+      "lane": "lane-hocmon",
+      "col": 2,
+      "type": "backend",
+      "label": "Sinh Lệnh & Xếp Lịch",
+      "sublabel": "Ưu Tiên Thợ Nhà Trước",
+      "tag": "BƯỚC B07–B09"
+    },
+    {
+      "id": "c2-gop-mua-vai",
+      "lane": "lane-hocmon",
+      "col": 3,
+      "type": "backend",
+      "label": "Gộp Đơn Mua Vải NCC",
+      "sublabel": "Kiểm Độ Co Rút Đầu Vào",
+      "tag": "BƯỚC B10–B11"
+    },
+    {
+      "id": "c3-cat-may-qc8",
+      "lane": "lane-hocmon",
+      "col": 4,
+      "type": "backend",
+      "label": "Cắt May & QC 9 Bước",
+      "sublabel": "Bấm Điện Thoại 1–2 Chạm",
+      "tag": "BƯỚC B12–B15"
+    },
+    {
+      "id": "c4-giao-vietqr-lai",
+      "lane": "lane-govap",
+      "col": 5,
+      "type": "database",
+      "label": "Giao Hàng & Chốt Lãi",
+      "sublabel": "BBNT, VietQR & Giá Lô",
+      "tag": "BƯỚC B16–B20"
+    },
+    {
+      "id": "gate-1-4-khoa-don",
+      "lane": "lane-gates",
+      "col": 2,
+      "type": "security",
+      "label": "Chốt 1–4: Khóa Sửa Đơn",
+      "sublabel": "Đủ Cọc Mới Mở Lệnh SX",
+      "tag": "KHÓA CỨNG NVKD"
+    },
+    {
+      "id": "gate-5-6-vai-cat",
+      "lane": "lane-gates",
+      "col": 3,
+      "type": "security",
+      "label": "Chốt 5–6: Duyệt Vải & Cắt",
+      "sublabel": "Tổ Cắt Bấm Nhận <24h",
+      "tag": "CẢNH BÁO ĐỎ XƯỞNG"
+    },
+    {
+      "id": "gate-7-final-qc",
+      "lane": "lane-gates",
+      "col": 4,
+      "type": "security",
+      "label": "Chốt 7: Final QC 100%",
+      "sublabel": "Đạt Chuẩn Mới In Phiếu Giao",
+      "tag": "CHUẨN ĐẠT ≥95%"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e-m1",
+      "from": "c1-tiep-nhan-qr",
+      "to": "c1-bao-gia-hd",
+      "label": "Đủ Quy Cách Áo",
+      "variant": "emphasis",
+      "role": "main"
+    },
+    {
+      "id": "e-m2",
+      "from": "c1-bao-gia-hd",
+      "to": "c2-lenh-sx-3tho",
+      "label": "Kế Toán Duyệt Cọc",
+      "variant": "emphasis",
+      "role": "main"
+    },
+    {
+      "id": "e-m3",
+      "from": "c2-lenh-sx-3tho",
+      "to": "c2-gop-mua-vai",
+      "label": "Tách Định Mức Vải",
+      "variant": "emphasis",
+      "role": "main"
+    },
+    {
+      "id": "e-m4",
+      "from": "c2-gop-mua-vai",
+      "to": "c3-cat-may-qc8",
+      "label": "Đủ Vải & Đạt Co Rút",
+      "variant": "emphasis",
+      "role": "main"
+    },
+    {
+      "id": "e-m5",
+      "from": "c3-cat-may-qc8",
+      "to": "c4-giao-vietqr-lai",
+      "label": "Đóng Thùng Giao",
+      "variant": "emphasis",
+      "role": "main"
+    },
+    {
+      "id": "e-g1",
+      "from": "c2-lenh-sx-3tho",
+      "to": "gate-1-4-khoa-don",
+      "label": "Kiểm Cọc & Giá",
+      "variant": "security",
+      "role": "error"
+    },
+    {
+      "id": "e-g2",
+      "from": "gate-1-4-khoa-don",
+      "to": "gate-5-6-vai-cat",
+      "label": "Khóa Nút Sửa Sale",
+      "variant": "security",
+      "role": "branch"
+    },
+    {
+      "id": "e-g3",
+      "from": "gate-5-6-vai-cat",
+      "to": "gate-7-final-qc",
+      "label": "Tổ Cắt Nhận <24h",
+      "variant": "default",
+      "role": "branch"
+    },
+    {
+      "id": "e-g4",
+      "from": "gate-7-final-qc",
+      "to": "c3-cat-may-qc8",
+      "label": "Đạt 100% Final QC",
+      "variant": "emphasis",
+      "role": "return"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Chốt Chặn 1, 2, 3 & 4 — Khóa Lỗi Từ Phòng Kinh Doanh Trước Khi Xuống Xưởng",
+      "items": [
+        "Chốt chặn 1 & 2: Chưa điền đủ thông số bắt buộc (dòng sản phẩm, số lượng, chất liệu) thì nút Tạo báo giá bị khóa; giá giảm vượt khung phải có Trưởng phòng hoặc Giám đốc bấm duyệt mới in được hợp đồng.",
+        "Chốt chặn 3 & 4: Chỉ khi Kế toán bấm 'Đã nhận cọc' (hoặc duyệt công nợ), đơn hàng mới sinh Lệnh sản xuất. Ngay giây phút đó, phần mềm KHÓA CỨNG nút tự sửa đơn của nhân viên kinh doanh."
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Chốt Chặn 5, 6 & 7 — Kiểm Soát Mua Vải, Nhận Việc Tổ Cắt 24h & Final QC 100%",
+      "items": [
+        "Chốt chặn 5 & 6: Mọi đơn đặt mua vải/phụ liệu phải duyệt trực tuyến trên phần mềm; sau 24 giờ phát phiếu mà Tổ cắt chưa bấm xác nhận nhận đủ vải và rập thì màn hình Giám đốc xưởng báo đỏ.",
+        "Chốt chặn 7: Trước ngày giao 2 ngày, QC phải bấm hoàn tất kiểm tra 100% thành phẩm cuối cùng (Final QC) mới mở khóa nút xác nhận sẵn sàng giao hàng; giao xong tự động nhắc Kế toán xuất BBNT & hóa đơn."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "9487f7ef-6d65-48e3-8c23-8028fec90871",
+  "status": "current",
+  "command": "deliver",
+  "type": "tree",
+  "input": "/Users/hungnpv/Downloads/Sunext/Sunext-Agent-GG/dong-phuc-hoa-tay-mini-erp/sources/07-hoa-tay-9-vi-tri-phan-quyen-mobile-tree.json",
+  "output": "/Users/hungnpv/Downloads/Sunext/Sunext-Agent-GG/dong-phuc-hoa-tay-mini-erp/07-hoa-tay-9-vi-tri-phan-quyen-mobile-tree.html",
+  "specification": {
+    "sha256": "6159aec53b7bd2a8a6df7a49ffb9da047fdfcccc610ec55a30c60f4a40231cb4",
+    "bytes": 5093
+  },
+  "artifact": {
+    "sha256": "190444e5cd9db22cad6d8b35c72c6e9ee332284a039b98fab11655a09db08792",
+    "bytes": 832098
+  }
+}

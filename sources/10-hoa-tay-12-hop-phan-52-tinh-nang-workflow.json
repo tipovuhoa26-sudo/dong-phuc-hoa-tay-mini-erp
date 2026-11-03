@@ -1,0 +1,259 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Bản Đồ Kiến Trúc 12 Hợp Phần (M0–M11) & Lộ Trình Thay Thế GetFly, Excel, Zalo, FAST",
+    "output": "dong-phuc-hoa-tay-mini-erp/10-hoa-tay-12-hop-phan-52-tinh-nang-workflow.html",
+    "quality_profile": "showcase",
+    "views": [
+      {
+        "id": "mach-chinh-m0-den-m11",
+        "label": "1. Trục Cốt Lõi M0 -> M10 (50,2 Ngày Công)",
+        "focus": [
+          "m0-khao-sat",
+          "m1-nen-9-vai-tro",
+          "m2-m3-crm-ban-hang",
+          "m6-m7-xep-lich-sx",
+          "m8-m9-xuong-mua-vai",
+          "m10-ke-toan-fast"
+        ],
+        "note": "Trục chính từ khảo sát M0, dựng nền M1, CRM & Bán hàng M2–M3, Xếp lịch & SX M6–M7, Xưởng & Mua vải M8–M9 đến Kế toán quản trị M10."
+      },
+      {
+        "id": "tu-dong-hoa-ai-va-chuyen-getfly",
+        "label": "2. Tự Nhắc Việc (M4), AI (M5) & GetFly (M11)",
+        "focus": [
+          "m2-m3-crm-ban-hang",
+          "m11-chuyen-getfly",
+          "m4-tu-dong-cong-no",
+          "m5-tro-ly-ai-kpi",
+          "m8-m9-xuong-mua-vai"
+        ],
+        "note": "Chuyển toàn bộ khách & đơn đang mở từ GetFly (M11), tự nhắc xuất BBNT & tuổi nợ (M4), và Trợ lý AI hỏi đáp tiếng Việt ≥90% kèm KPI (M5)."
+      }
+    ]
+  },
+  "lanes": [
+    {
+      "id": "lane-core-crm",
+      "label": "Khối Khảo Sát, Nền Tảng 9 Vai Trò & Kế Toán Quản Trị Thay Thế FAST (M0, M1, M10)",
+      "variant": "normal"
+    },
+    {
+      "id": "lane-prod-proc",
+      "label": "Khối Kinh Doanh CRM, Xếp Lịch 3 Nhóm Thợ, 7 Tổ SX, QC & Gộp Mua Vải (M2, M3, M6–M9)",
+      "variant": "normal"
+    },
+    {
+      "id": "lane-acct-ai",
+      "label": "Khối Chuyển Đổi Dữ Liệu GetFly, Tự Động Nhắc Công Nợ & Trợ Lý AI Tiếng Việt (M11, M4, M5)",
+      "variant": "exception"
+    }
+  ],
+  "phases": [
+    {
+      "id": "p-found",
+      "label": "1. Khởi Động & Nền Tảng (M0, M1)",
+      "fromCol": 0,
+      "toCol": 1,
+      "variant": "default"
+    },
+    {
+      "id": "p-crm-sx",
+      "label": "2. Kinh Doanh, Xếp Lịch & Xưởng (M2–M4, M6–M9, M11)",
+      "fromCol": 2,
+      "toCol": 3,
+      "variant": "emphasis"
+    },
+    {
+      "id": "p-acct-ai",
+      "label": "3. Thực Thi Xưởng, Kế Toán Thay FAST & AI (M5, M8–M10)",
+      "fromCol": 4,
+      "toCol": 5,
+      "variant": "security"
+    }
+  ],
+  "mainPath": [
+    "m0-khao-sat",
+    "m1-nen-9-vai-tro",
+    "m2-m3-crm-ban-hang",
+    "m6-m7-xep-lich-sx",
+    "m8-m9-xuong-mua-vai",
+    "m10-ke-toan-fast"
+  ],
+  "nodes": [
+    {
+      "id": "m0-khao-sat",
+      "lane": "lane-core-crm",
+      "col": 0,
+      "type": "frontend",
+      "label": "M0: Khảo Sát Mẫu",
+      "sublabel": "2,7 Công · 5,94 Triệu",
+      "tag": "SV-05 · SV-08"
+    },
+    {
+      "id": "m1-nen-9-vai-tro",
+      "lane": "lane-core-crm",
+      "col": 1,
+      "type": "security",
+      "label": "M1: Nền 9 Vai Trò",
+      "sublabel": "4,2 Công · 9,24 Triệu",
+      "tag": "SV-01..04 · SV-18"
+    },
+    {
+      "id": "m2-m3-crm-ban-hang",
+      "lane": "lane-prod-proc",
+      "col": 2,
+      "type": "frontend",
+      "label": "M2–M3: CRM & Đơn",
+      "sublabel": "8,6 Công · 18,92 Triệu",
+      "tag": "QR & KHÓA SỬA"
+    },
+    {
+      "id": "m6-m7-xep-lich-sx",
+      "lane": "lane-prod-proc",
+      "col": 3,
+      "type": "backend",
+      "label": "M6–M7: Xếp Lịch SX",
+      "sublabel": "9,6 Công · 21,12 Triệu",
+      "tag": "TRA GIAO <5 PHÚT"
+    },
+    {
+      "id": "m8-m9-xuong-mua-vai",
+      "lane": "lane-prod-proc",
+      "col": 4,
+      "type": "backend",
+      "label": "M8–M9: Xưởng & Vải",
+      "sublabel": "6,7 Công · 14,74 Triệu",
+      "tag": "QC 9 BƯỚC · GỘP VẢI"
+    },
+    {
+      "id": "m10-ke-toan-fast",
+      "lane": "lane-core-crm",
+      "col": 5,
+      "type": "database",
+      "label": "M10: Thay Thế FAST",
+      "sublabel": "8,5 Công · 18,70 Triệu",
+      "tag": "VIETQR & GIÁ LÔ"
+    },
+    {
+      "id": "m11-chuyen-getfly",
+      "lane": "lane-acct-ai",
+      "col": 2,
+      "type": "database",
+      "label": "M11: Chuyển GetFly",
+      "sublabel": "2,5 Công · 5,47 Triệu",
+      "tag": "ĐÀO TẠO & BH 3T"
+    },
+    {
+      "id": "m4-tu-dong-cong-no",
+      "lane": "lane-acct-ai",
+      "col": 3,
+      "type": "messagebus",
+      "label": "M4: Nhắc Công Nợ",
+      "sublabel": "2,5 Công · 5,50 Triệu",
+      "tag": "SV-28 · SV-29"
+    },
+    {
+      "id": "m5-tro-ly-ai-kpi",
+      "lane": "lane-acct-ai",
+      "col": 4,
+      "type": "cloud",
+      "label": "M5: Trợ Lý AI & KPI",
+      "sublabel": "4,9 Công · 10,78 Triệu",
+      "tag": "TIẾNG VIỆT ≥90%"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e-1",
+      "from": "m0-khao-sat",
+      "to": "m1-nen-9-vai-tro",
+      "label": "Chốt Biểu Mẫu",
+      "variant": "emphasis",
+      "role": "main"
+    },
+    {
+      "id": "e-2",
+      "from": "m1-nen-9-vai-tro",
+      "to": "m2-m3-crm-ban-hang",
+      "label": "Mở 9 Vai Trò",
+      "variant": "emphasis",
+      "role": "main"
+    },
+    {
+      "id": "e-3",
+      "from": "m2-m3-crm-ban-hang",
+      "to": "m6-m7-xep-lich-sx",
+      "label": "Đơn Đã Khóa Sửa",
+      "variant": "emphasis",
+      "role": "main"
+    },
+    {
+      "id": "e-4",
+      "from": "m6-m7-xep-lich-sx",
+      "to": "m8-m9-xuong-mua-vai",
+      "label": "Phát Phiếu 7 Tổ",
+      "variant": "emphasis",
+      "role": "main"
+    },
+    {
+      "id": "e-5",
+      "from": "m8-m9-xuong-mua-vai",
+      "to": "m10-ke-toan-fast",
+      "label": "Chi Phí Vải & Công",
+      "variant": "emphasis",
+      "role": "main"
+    },
+    {
+      "id": "e-b1",
+      "from": "m2-m3-crm-ban-hang",
+      "to": "m11-chuyen-getfly",
+      "label": "Nạp Khách GetFly",
+      "variant": "security",
+      "role": "error"
+    },
+    {
+      "id": "e-b2",
+      "from": "m11-chuyen-getfly",
+      "to": "m4-tu-dong-cong-no",
+      "label": "Đồng Bộ Đơn Mở",
+      "variant": "security",
+      "role": "branch"
+    },
+    {
+      "id": "e-b3",
+      "from": "m4-tu-dong-cong-no",
+      "to": "m5-tro-ly-ai-kpi",
+      "label": "Tuổi Nợ & KPI",
+      "variant": "default",
+      "role": "branch"
+    },
+    {
+      "id": "e-b4",
+      "from": "m5-tro-ly-ai-kpi",
+      "to": "m8-m9-xuong-mua-vai",
+      "label": "Báo Cáo & Đối Chiếu",
+      "variant": "emphasis",
+      "role": "return"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Cấu Trúc 12 Hợp Phần (M0–M11) — 50,2 Ngày Công — 110,41 Triệu VNĐ Trước Thuế",
+      "items": [
+        "Đơn giá ngày công kỹ sư ưu đãi riêng cho Đồng phục Hoa Tay: 2.200.000 VNĐ/ngày công (giảm từ mức chuẩn 2.500.000 VNĐ/ngày công).",
+        "Tổng cộng 50,2 ngày công = 110.410.000 VNĐ (chưa thuế) · Thuế GTGT 10%: 11.041.000 VNĐ · Tổng thanh toán sau thuế: 121.451.000 VNĐ."
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Ranh Giới Phạm Vi Minh Bạch — Không Phát Sinh Chi Phí Ẩn",
+      "items": [
+        "ĐÃ BAO GỒM: Toàn bộ 52 tính năng nghiệp vụ (SV-01 đến SV-52), chuyển dữ liệu khách hàng & đơn đang mở từ GetFly, 4 buổi đào tạo trực tiếp kèm video ngắn (1–3 phút) và 03 tháng bảo hành miễn phí.",
+        "RANH GIỚI RÕ RÀNG: Thay thế hoàn toàn FAST ở mảng kế toán quản trị nội bộ & tính giá thành lô (không làm sổ thuế nhà nước); quản lý mua/xuất vải theo đơn (chưa gồm kiểm kê kho cây vải lẻ độc lập)."
+      ]
+    }
+  ]
+}

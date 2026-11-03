@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "5b5a8fbb-e691-49db-9397-ef1bfb69c144",
+  "status": "current",
+  "command": "deliver",
+  "type": "lifecycle",
+  "input": "/Users/hungnpv/Downloads/Sunext/Sunext-Agent-GG/dong-phuc-hoa-tay-mini-erp/sources/04-hoa-tay-vong-doi-don-hang-7-trang-thai-lifecycle.json",
+  "output": "/Users/hungnpv/Downloads/Sunext/Sunext-Agent-GG/dong-phuc-hoa-tay-mini-erp/04-hoa-tay-vong-doi-don-hang-7-trang-thai-lifecycle.html",
+  "specification": {
+    "sha256": "5c9977969a8660d175cb666276bf4e5958aa3a630fb37dd9b817d669b793405d",
+    "bytes": 6689
+  },
+  "artifact": {
+    "sha256": "80c7449f8a71011524eecc25f90486527d9fdbc13da36400c767f6df8f729454",
+    "bytes": 825761
+  }
+}

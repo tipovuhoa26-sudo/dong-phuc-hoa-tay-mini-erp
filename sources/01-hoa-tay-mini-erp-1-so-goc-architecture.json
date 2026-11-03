@@ -1,0 +1,466 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Mô Hình Hoạt Động Tổng Thể \"1 Sổ Gốc Duy Nhất\": Liên Thông 4 Phòng Ban & 12 Hợp Phần (M0–M11)",
+    "output": "dong-phuc-hoa-tay-mini-erp/01-hoa-tay-mini-erp-1-so-goc-architecture.html",
+    "quality_profile": "showcase",
+    "views": [
+      {
+        "id": "toan-canh-1-so-goc",
+        "label": "1. Toàn Cảnh 1 Sổ Gốc & 4 Phòng Ban Liên Thông",
+        "focus": [
+          "khach-b2b",
+          "khach-dat-coc",
+          "giam-doc-hoatay",
+          "kinh-doanh-govap",
+          "chot-chan-khoa-don",
+          "tro-ly-ai-kpi",
+          "so-goc-crm",
+          "lenh-sx-3thang",
+          "so-ke-toan-m10",
+          "rap-dinh-muc",
+          "phieu-7-bo-phan",
+          "gop-mua-npl",
+          "ba-nhom-tho",
+          "qc-9-buoc-giao",
+          "ncc-ke-toan-lien"
+        ],
+        "note": "Xóa bỏ cảnh nhập lại trên 5 nơi; dữ liệu chỉ nhập 1 lần tại Kinh doanh và chảy xuyên suốt xuống Xưởng, Mua hàng, QC và Kế toán."
+      },
+      {
+        "id": "luong-kinh-doanh-5-phut",
+        "label": "2. Kinh Doanh: Tra Giao <5 Phút & Khóa Sửa Đơn",
+        "focus": [
+          "khach-b2b",
+          "khach-dat-coc",
+          "kinh-doanh-govap",
+          "chot-chan-khoa-don",
+          "so-goc-crm",
+          "lenh-sx-3thang"
+        ],
+        "note": "NVKD quét QR mẫu áo, tra ngày giao dưới 5 phút; ngay khi Kế toán xác nhận cọc VietQR, hệ thống tự động khóa cứng nút sửa của NVKD."
+      },
+      {
+        "id": "luong-xuong-3-nhom-tho-mua-vai",
+        "label": "3. Xưởng Hóc Môn: 3 Nhóm Thợ, Mua Vải & QC",
+        "focus": [
+          "so-goc-crm",
+          "lenh-sx-3thang",
+          "rap-dinh-muc",
+          "phieu-7-bo-phan",
+          "gop-mua-npl",
+          "ba-nhom-tho",
+          "qc-9-buoc-giao"
+        ],
+        "note": "Tự sinh Lệnh SX, xếp lịch ưu tiên thợ xưởng và thợ nhà trước vệ tinh, phát Phiếu xuống 7 tổ, gộp đơn mua vải và chấm QC 9 bước."
+      },
+      {
+        "id": "luong-ke-toan-gia-thanh-ai",
+        "label": "4. Kế Toán (Thay FAST) & Trợ Lý AI Tiếng Việt",
+        "focus": [
+          "giam-doc-hoatay",
+          "tro-ly-ai-kpi",
+          "lenh-sx-3thang",
+          "so-ke-toan-m10",
+          "gop-mua-npl",
+          "qc-9-buoc-giao",
+          "ncc-ke-toan-lien"
+        ],
+        "note": "Tự nhắc xuất BBNT/VietQR khi giao hàng, tự tính giá thành lô khớp công thức chị Liên, xuất 8 báo cáo thay FAST và hỏi AI tiếng Việt."
+      }
+    ]
+  },
+  "layout": {
+    "mode": "grid",
+    "origin": [
+      44,
+      118
+    ],
+    "cols": 5,
+    "gapX": 84,
+    "gapY": 84,
+    "cellW": 152,
+    "cellH": 70
+  },
+  "components": [
+    {
+      "id": "khach-b2b",
+      "type": "frontend",
+      "label": "Khách Hàng B2B",
+      "sublabel": "BV Tâm An (Đặt 400 Bộ)",
+      "tag": "KHÁCH ĐẶT MAY",
+      "size": [
+        148,
+        62
+      ],
+      "col": 0,
+      "row": 0
+    },
+    {
+      "id": "khach-dat-coc",
+      "type": "frontend",
+      "label": "Quét Mã VietQR",
+      "sublabel": "Đặt Cọc & Thanh Toán",
+      "tag": "TIỀN VÀO TK (B06)",
+      "size": [
+        148,
+        62
+      ],
+      "col": 0,
+      "row": 1
+    },
+    {
+      "id": "giam-doc-hoatay",
+      "type": "frontend",
+      "label": "Ban Giám Đốc",
+      "sublabel": "Duyệt Giá, Chi & Xem Lãi",
+      "tag": "ĐIỀU HÀNH (CEO)",
+      "size": [
+        148,
+        62
+      ],
+      "col": 0,
+      "row": 2
+    },
+    {
+      "id": "kinh-doanh-govap",
+      "type": "frontend",
+      "label": "1. Phòng Kinh Doanh",
+      "sublabel": "Quét QR & Tra Giao <5p",
+      "tag": "VĂN PHÒNG GÒ VẤP",
+      "size": [
+        148,
+        62
+      ],
+      "col": 1,
+      "row": 0
+    },
+    {
+      "id": "chot-chan-khoa-don",
+      "type": "security",
+      "label": "7 Chốt Chặn Tự Động",
+      "sublabel": "Xác Nhận Cọc & Khóa Sửa",
+      "tag": "STAGE-GATE (SV-24)",
+      "size": [
+        148,
+        62
+      ],
+      "col": 1,
+      "row": 1
+    },
+    {
+      "id": "tro-ly-ai-kpi",
+      "type": "cloud",
+      "label": "Trợ Lý AI & KPI",
+      "sublabel": "Hỏi Tiếng Việt ≥90% (M5)",
+      "tag": "SV-30 · SV-32",
+      "size": [
+        148,
+        62
+      ],
+      "col": 1,
+      "row": 2
+    },
+    {
+      "id": "so-goc-crm",
+      "type": "database",
+      "label": "Sổ Gốc Đơn Đa Mẫu",
+      "sublabel": "Hồ Sơ, Size & Điểm Giao",
+      "tag": "M2 · M3 (THAY GETFLY)",
+      "size": [
+        148,
+        62
+      ],
+      "col": 2,
+      "row": 0
+    },
+    {
+      "id": "lenh-sx-3thang",
+      "type": "backend",
+      "label": "Xếp Lịch SX 3 Tháng",
+      "sublabel": "Ưu Tiên Thợ Nhà (M6–M7)",
+      "tag": "SV-12 · SV-21",
+      "size": [
+        148,
+        62
+      ],
+      "col": 2,
+      "row": 1
+    },
+    {
+      "id": "so-ke-toan-m10",
+      "type": "database",
+      "label": "Sổ Kế Toán Quản Trị",
+      "sublabel": "BBNT, Tuổi Nợ & Giá Lô",
+      "tag": "M4 · M10 (THAY FAST)",
+      "size": [
+        148,
+        62
+      ],
+      "col": 2,
+      "row": 2
+    },
+    {
+      "id": "rap-dinh-muc",
+      "type": "backend",
+      "label": "Kho Rập & Định Mức",
+      "sublabel": "Mã Rập, Vải, Chỉ & Nút",
+      "tag": "DỮ LIỆU GỐC (SV-34)",
+      "size": [
+        148,
+        62
+      ],
+      "col": 3,
+      "row": 0
+    },
+    {
+      "id": "phieu-7-bo-phan",
+      "type": "messagebus",
+      "label": "Phiếu Triển Khai 7 Tổ",
+      "sublabel": "Rập, Cắt, May, Thêu, Ủi",
+      "tag": "M8 (SV-35 · SV-36)",
+      "size": [
+        148,
+        62
+      ],
+      "col": 3,
+      "row": 1
+    },
+    {
+      "id": "gop-mua-npl",
+      "type": "backend",
+      "label": "3. Mua Hàng & Gộp Vải",
+      "sublabel": "Gộp Nhiều Đơn Đặt NCC",
+      "tag": "M9 (SV-39 · SV-40)",
+      "size": [
+        148,
+        62
+      ],
+      "col": 3,
+      "row": 2
+    },
+    {
+      "id": "ba-nhom-tho",
+      "type": "external",
+      "label": "2. Xưởng & 3 Nhóm Thợ",
+      "sublabel": "Hóc Môn · Thợ Nhà · Vệ Tinh",
+      "tag": "NĂNG LỰC (SV-08)",
+      "size": [
+        148,
+        62
+      ],
+      "col": 4,
+      "row": 0
+    },
+    {
+      "id": "qc-9-buoc-giao",
+      "type": "security",
+      "label": "Kiểm QC 9 Bước & Giao",
+      "sublabel": "Final QC 100% & Đóng Bao",
+      "tag": "CHUẨN ≥95% (SV-38)",
+      "size": [
+        148,
+        62
+      ],
+      "col": 4,
+      "row": 1
+    },
+    {
+      "id": "ncc-ke-toan-lien",
+      "type": "external",
+      "label": "4. Kế Toán & 8 Báo Cáo",
+      "sublabel": "Chị Liên Chốt Lãi Lỗ Lô",
+      "tag": "SV-45 · SV-47",
+      "size": [
+        148,
+        62
+      ],
+      "col": 4,
+      "row": 2
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "TRỤ CỘT 1: MỘT SỔ GỐC DUY NHẤT — HOA TAY MINI-ERP (Nhập 1 Lần · Dùng Chung Toàn Công Ty)",
+      "wraps": [
+        "so-goc-crm",
+        "lenh-sx-3thang",
+        "so-ke-toan-m10",
+        "rap-dinh-muc",
+        "phieu-7-bo-phan",
+        "gop-mua-npl"
+      ],
+      "pad": 20
+    }
+  ],
+  "connections": [
+    {
+      "id": "c-khach-kd",
+      "from": "khach-b2b",
+      "to": "kinh-doanh-govap",
+      "label": "Hỏi Đặt 400 Bộ",
+      "variant": "emphasis"
+    },
+    {
+      "id": "c-khach-coc",
+      "from": "khach-b2b",
+      "to": "khach-dat-coc",
+      "label": "Duyệt Mẫu & HĐ",
+      "variant": "default"
+    },
+    {
+      "id": "c-kd-sogoc",
+      "from": "kinh-doanh-govap",
+      "to": "so-goc-crm",
+      "label": "Nhập Đơn 1 Lần",
+      "variant": "emphasis"
+    },
+    {
+      "id": "c-kd-gate",
+      "from": "kinh-doanh-govap",
+      "to": "chot-chan-khoa-don",
+      "label": "Tra Ngày Giao <5p",
+      "variant": "default"
+    },
+    {
+      "id": "c-coc-gate",
+      "from": "khach-dat-coc",
+      "to": "chot-chan-khoa-don",
+      "label": "Báo Đã Nhận Cọc",
+      "variant": "security"
+    },
+    {
+      "id": "c-gate-sx",
+      "from": "chot-chan-khoa-don",
+      "to": "lenh-sx-3thang",
+      "label": "Khóa Sửa & Mở SX",
+      "variant": "security"
+    },
+    {
+      "id": "c-sogoc-sx",
+      "from": "so-goc-crm",
+      "to": "lenh-sx-3thang",
+      "label": "Tự Sinh Lệnh SX",
+      "variant": "emphasis"
+    },
+    {
+      "id": "c-sogoc-rap",
+      "from": "so-goc-crm",
+      "to": "rap-dinh-muc",
+      "label": "Gắn Mẫu & Size",
+      "variant": "default"
+    },
+    {
+      "id": "c-rap-phieu",
+      "from": "rap-dinh-muc",
+      "to": "phieu-7-bo-phan",
+      "label": "Nạp Rập & Định Mức",
+      "variant": "default"
+    },
+    {
+      "id": "c-rap-tho",
+      "from": "rap-dinh-muc",
+      "to": "ba-nhom-tho",
+      "label": "Giao Rập Chuẩn",
+      "variant": "default"
+    },
+    {
+      "id": "c-sx-phieu",
+      "from": "lenh-sx-3thang",
+      "to": "phieu-7-bo-phan",
+      "label": "Phát Phiếu 7 Tổ",
+      "variant": "emphasis"
+    },
+    {
+      "id": "c-tho-qc",
+      "from": "ba-nhom-tho",
+      "to": "qc-9-buoc-giao",
+      "label": "Cắt, May, Thêu, Ủi",
+      "variant": "emphasis"
+    },
+    {
+      "id": "c-phieu-qc",
+      "from": "phieu-7-bo-phan",
+      "to": "qc-9-buoc-giao",
+      "label": "Chấm QC 9 Bước",
+      "variant": "security"
+    },
+    {
+      "id": "c-phieu-mua",
+      "from": "phieu-7-bo-phan",
+      "to": "gop-mua-npl",
+      "label": "Tách Nhu Cầu Vải",
+      "variant": "emphasis"
+    },
+    {
+      "id": "c-mua-ketoan",
+      "from": "gop-mua-npl",
+      "to": "so-ke-toan-m10",
+      "label": "Gắn Giá Vải Vào Lô",
+      "variant": "emphasis"
+    },
+    {
+      "id": "c-mua-ncc",
+      "from": "gop-mua-npl",
+      "to": "ncc-ke-toan-lien",
+      "label": "Gộp Đơn Đặt NCC",
+      "variant": "default"
+    },
+    {
+      "id": "c-qc-lien",
+      "from": "qc-9-buoc-giao",
+      "to": "ncc-ke-toan-lien",
+      "label": "Giao Xong Nhắc BBNT",
+      "variant": "emphasis"
+    },
+    {
+      "id": "c-sx-ketoan",
+      "from": "lenh-sx-3thang",
+      "to": "so-ke-toan-m10",
+      "label": "Đồng Bộ Tiến Độ",
+      "variant": "default"
+    },
+    {
+      "id": "c-ceo-ai",
+      "from": "giam-doc-hoatay",
+      "to": "tro-ly-ai-kpi",
+      "label": "Hỏi Tiếng Việt",
+      "variant": "dashed"
+    },
+    {
+      "id": "c-ai-ketoan",
+      "from": "tro-ly-ai-kpi",
+      "to": "so-ke-toan-m10",
+      "label": "Đọc Lãi Lỗ & Nợ",
+      "variant": "dashed"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Trụ Cột 1 — Một Sổ Gốc Duy Nhất: Chấm Dứt Cảnh Gõ Lại Qua 5 Phần Mềm",
+      "items": [
+        "Trước đây: 1 đơn hàng phải gõ đi gõ lại qua GetFly CRM, File Excel TĐSX (mất 60 phút), File QLĐHSX trên Google Drive (20–30 phút), nhóm Zalo (Chuyển tiền / Giao hàng) và phần mềm FAST.",
+        "Bây giờ: Nhân viên kinh doanh nhập thông tin khách và mẫu áo đúng 1 lần. Xưởng Hóc Môn, Mua hàng, QC, Giao hàng và Kế toán cùng mở hồ sơ đó làm tiếp phần việc của mình."
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Trụ Cột 2 — Xếp Lịch Theo Sức Thợ Thật (Ưu Tiên Người Nhà Trước Vệ Tinh)",
+      "items": [
+        "Hệ thống nắm rõ năng lực của 3 nhóm nguồn lực: (1) Thợ tại xưởng Hóc Môn, (2) Thợ nhận đồ về may tại nhà và (3) Xưởng vệ tinh bên ngoài.",
+        "Khi có đơn mới, máy tự động lấp đầy việc cho thợ xưởng và thợ nhà trước, phần vượt quá mới chia ra vệ tinh; giúp Kinh doanh tự bấm xem ngày giao hàng khả thi trong dưới 5 phút."
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "Trụ Cột 3 — 7 Chốt Chặn Tự Động & Kế Toán Quản Trị Thay Thế Hoàn Toàn FAST",
+      "items": [
+        "7 chốt chặn tự động khóa lỗi từ gốc: Thiếu thông số không ra được báo giá; Kế toán xác nhận cọc mới mở lệnh xưởng; đơn đã vào lịch xưởng thì Kinh doanh bị khóa cứng nút sửa đơn.",
+        "Phân hệ Kế toán quản trị (M10) tự in ĐNTT kèm mã VietQR, tự tính tuổi nợ, tự tính giá thành từng lô khớp công thức của chị Liên và xuất 8 báo cáo quản trị thay thế FAST."
+      ]
+    }
+  ]
+}

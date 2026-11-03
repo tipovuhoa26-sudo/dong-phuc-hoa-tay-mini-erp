@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "929131c3-7555-45cb-82bc-1f2b1baf3672",
+  "status": "current",
+  "command": "deliver",
+  "type": "sequence",
+  "input": "/Users/hungnpv/Downloads/Sunext/Sunext-Agent-GG/dong-phuc-hoa-tay-mini-erp/sources/03-hoa-tay-20-buoc-benh-vien-tam-an-sequence.json",
+  "output": "/Users/hungnpv/Downloads/Sunext/Sunext-Agent-GG/dong-phuc-hoa-tay-mini-erp/03-hoa-tay-20-buoc-benh-vien-tam-an-sequence.html",
+  "specification": {
+    "sha256": "e4455405a53c464b1b5bb914de05980e3fb390af5659fe3e54c0970a470cf8bc",
+    "bytes": 8820
+  },
+  "artifact": {
+    "sha256": "013d63c140e598f4756c1835166f9da831922daef9cf13910cc0493dcc1f7c9c",
+    "bytes": 827839
+  }
+}

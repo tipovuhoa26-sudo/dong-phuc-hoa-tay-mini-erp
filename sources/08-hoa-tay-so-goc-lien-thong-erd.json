@@ -1,0 +1,199 @@
+{
+  "schema_version": 1,
+  "diagram_type": "erd",
+  "meta": {
+    "title": "Kiến Trúc \"1 Sổ Gốc Duy Nhất\" (ERD): 6 Ngăn Sổ Dữ Liệu Liên Thông Xóa Bỏ Nhập Lại 5 Nơi",
+    "output": "dong-phuc-hoa-tay-mini-erp/08-hoa-tay-so-goc-lien-thong-erd.html",
+    "quality_profile": "showcase",
+    "views": [
+      {
+        "id": "so-kinh-doanh-va-lenh-san-xuat",
+        "label": "1. Sổ Khách Hàng, Đơn Đa Mẫu & Lịch SX 3 Tháng",
+        "focus": [
+          "customers_samples",
+          "sales_multi_orders",
+          "production_schedules",
+          "bom_procurement"
+        ],
+        "note": "Từ hồ sơ khách không trùng, nối sang đơn đa mẫu (3 mẫu áo, 2 điểm giao) và tự động đẻ ra Lệnh sản xuất mà không cần gõ lại File TĐSX."
+      },
+      {
+        "id": "so-xuong-qc-mua-vai-va-gia-thanh",
+        "label": "2. Sổ Phiếu 7 Tổ, QC 9 Bước, Vải & Giá Thành",
+        "focus": [
+          "sales_multi_orders",
+          "production_schedules",
+          "bom_procurement",
+          "shopfloor_qc_logs",
+          "vietqr_job_costing"
+        ],
+        "note": "Liên kết chặt chẽ giữa Phiếu triển khai 7 tổ, chấm QC 9 bước, gộp đơn mua vải NCC và bảng tính giá thành lô chuẩn chị Liên (thay FAST)."
+      }
+    ]
+  },
+  "layout": {
+    "mode": "grid",
+    "origin": [
+      48,
+      118
+    ],
+    "gapX": 82,
+    "gapY": 76,
+    "entityW": 228,
+    "headerH": 28,
+    "rowH": 19
+  },
+  "entities": [
+    {
+      "id": "customers_samples",
+      "label": "customers_samples",
+      "sublabel": "Hồ Sơ Khách & Áo Mẫu Mượn",
+      "tag": "SỔ 1: KHÁCH HÀNG",
+      "col": 0,
+      "row": 0,
+      "attributes": [
+        { "name": "id", "type": "uuid", "key": "pk" },
+        { "name": "customer_code", "type": "text", "key": "uk" },
+        { "name": "tax_or_phone", "type": "text", "key": "uk" },
+        { "name": "kanban_stage", "type": "text" },
+        { "name": "sample_loan_due", "type": "date" }
+      ]
+    },
+    {
+      "id": "sales_multi_orders",
+      "label": "sales_multi_orders",
+      "sublabel": "Báo Giá Đa Bản & Đơn Đa Mẫu",
+      "tag": "SỔ 2: ĐƠN BÁN HÀNG",
+      "col": 1,
+      "row": 0,
+      "attributes": [
+        { "name": "id", "type": "uuid", "key": "pk" },
+        { "name": "customer_id", "type": "uuid", "key": "fk", "references": "customers_samples.id" },
+        { "name": "quote_version", "type": "int4" },
+        { "name": "size_delivery_json", "type": "jsonb" },
+        { "name": "is_locked_for_sale", "type": "bool" },
+        { "name": "order_status_7", "type": "text" }
+      ]
+    },
+    {
+      "id": "production_schedules",
+      "label": "production_schedules",
+      "sublabel": "Lệnh SX & Bảng Lịch 3 Tháng",
+      "tag": "SỔ 3: KẾ HOẠCH SX",
+      "col": 2,
+      "row": 0,
+      "attributes": [
+        { "name": "id", "type": "uuid", "key": "pk" },
+        { "name": "order_id", "type": "uuid", "key": "fk", "references": "sales_multi_orders.id" },
+        { "name": "worker_tier_3", "type": "text" },
+        { "name": "horizon_3m_type", "type": "text" },
+        { "name": "promised_date", "type": "date" }
+      ]
+    },
+    {
+      "id": "bom_procurement",
+      "label": "bom_procurement",
+      "sublabel": "Định Mức Rập & Gộp Mua Vải",
+      "tag": "SỔ 4: RẬP & MUA VẢI",
+      "col": 0,
+      "row": 1,
+      "attributes": [
+        { "name": "id", "type": "uuid", "key": "pk" },
+        { "name": "order_id", "type": "uuid", "key": "fk", "references": "sales_multi_orders.id" },
+        { "name": "pattern_bom_code", "type": "text" },
+        { "name": "supplier_batch_po", "type": "text" },
+        { "name": "shrinkage_qc_ok", "type": "bool" }
+      ]
+    },
+    {
+      "id": "shopfloor_qc_logs",
+      "label": "shopfloor_qc_logs",
+      "sublabel": "Phiếu 7 Tổ & Chấm QC 9 Bước",
+      "tag": "SỔ 5: XƯỞNG & QC",
+      "col": 1,
+      "row": 1,
+      "attributes": [
+        { "name": "id", "type": "uuid", "key": "pk" },
+        { "name": "prod_id", "type": "uuid", "key": "fk", "references": "production_schedules.id" },
+        { "name": "cut_ack_in_24h", "type": "bool" },
+        { "name": "qc_step_9_pass_pct", "type": "numeric" },
+        { "name": "final_qc_100_done", "type": "bool" }
+      ]
+    },
+    {
+      "id": "vietqr_job_costing",
+      "label": "vietqr_job_costing",
+      "sublabel": "VietQR, Tuổi Nợ & Giá Thành Lô",
+      "tag": "SỔ 6: KẾ TOÁN & AI",
+      "col": 2,
+      "row": 1,
+      "attributes": [
+        { "name": "id", "type": "uuid", "key": "pk" },
+        { "name": "prod_id", "type": "uuid", "key": "fk", "references": "production_schedules.id" },
+        { "name": "vietqr_ar_aging", "type": "numeric" },
+        { "name": "batch_cogs_vnd", "type": "numeric" },
+        { "name": "net_profit_vnd", "type": "numeric" }
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "id": "rel-order-cust",
+      "from": "sales_multi_orders",
+      "to": "customers_samples",
+      "fromCardinality": "many",
+      "toCardinality": "one",
+      "label": "thuộc hồ sơ khách"
+    },
+    {
+      "id": "rel-prod-order",
+      "from": "production_schedules",
+      "to": "sales_multi_orders",
+      "fromCardinality": "many",
+      "toCardinality": "one",
+      "label": "tự sinh lệnh SX"
+    },
+    {
+      "id": "rel-bom-order",
+      "from": "bom_procurement",
+      "to": "sales_multi_orders",
+      "fromCardinality": "many",
+      "toCardinality": "one",
+      "label": "tách & gộp mua vải"
+    },
+    {
+      "id": "rel-qc-prod",
+      "from": "shopfloor_qc_logs",
+      "to": "production_schedules",
+      "fromCardinality": "many",
+      "toCardinality": "one",
+      "label": "phát phiếu 7 tổ"
+    },
+    {
+      "id": "rel-cost-prod",
+      "from": "vietqr_job_costing",
+      "to": "production_schedules",
+      "fromCardinality": "many",
+      "toCardinality": "one",
+      "label": "quyết toán lãi lô"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Sổ 1, 2 & 3 — Nhập 1 Lần Tại Phòng Kinh Doanh, Tự Sinh Lệnh Xuống Xưởng",
+      "items": [
+        "Sổ 1 (customers_samples) & Sổ 2 (sales_multi_orders): Lưu mã khách không trùng, quản lý áo mẫu cho mượn, lưu mọi phiên bản báo giá và gom nhiều mẫu áo + nhiều địa chỉ nhận trong cùng 1 đơn.",
+        "Sổ 3 (production_schedules): Ngay khi cột is_locked_for_sale bật thành TRUE (Kế toán xác nhận cọc), hệ thống tự động tạo Lệnh sản xuất và xếp vào lịch 3 tháng của 3 nhóm thợ."
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Sổ 4, 5 & 6 — Liên Thông Vải, Chất Lượng QC & Giá Thành Lô (Thay Thế FAST)",
+      "items": [
+        "Sổ 4 (bom_procurement) & Sổ 5 (shopfloor_qc_logs): Nối định mức rập với đơn gộp mua vải NCC (vẫn biết vải thuộc đơn nào) và lưu kết quả chấm QC 9 bước theo từng tổ thợ.",
+        "Sổ 6 (vietqr_job_costing): Tự động hội tụ tiền cọc/thanh toán VietQR, tuổi nợ phải thu, chi phí vải thực xuất và công thợ để tính ra lãi ròng từng lô hàng cho chị Liên và Giám đốc."
+      ]
+    }
+  ]
+}

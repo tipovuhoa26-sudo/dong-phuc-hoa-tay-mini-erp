@@ -1,0 +1,278 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "Hành Trình 20 Bước (B01–B20): Đơn Hàng 400 Bộ Đồng Phục Bệnh Viện Đa Khoa Tâm An Chạy Như Thế Nào?",
+    "output": "dong-phuc-hoa-tay-mini-erp/03-hoa-tay-20-buoc-benh-vien-tam-an-sequence.html",
+    "quality_profile": "showcase",
+    "views": [
+      {
+        "id": "chang-1-2-bao-gia-xep-lich-mua-vai",
+        "label": "1. Chặng 1 & 2 (B01–B11): Báo Giá, Lịch & Vải",
+        "focus": [
+          "bv-tam-an",
+          "nvkd-govap",
+          "khsx-rap",
+          "mua-hang-kho",
+          "ke-toan-ai"
+        ],
+        "note": "Bệnh viện Tâm An hỏi 400 bộ (3 mẫu áo, 2 điểm giao), tra ngày giao <5p, cọc VietQR khóa đơn, tự sinh Lệnh SX và gộp đơn mua vải."
+      },
+      {
+        "id": "chang-3-4-cat-may-qc-giao-hang-gia-thanh",
+        "label": "2. Chặng 3 & 4 (B12–B20): Cắt May, QC & Lãi Lô",
+        "focus": [
+          "bv-tam-an",
+          "nvkd-govap",
+          "khsx-rap",
+          "mua-hang-kho",
+          "to-cat-may-qc",
+          "ke-toan-ai"
+        ],
+        "note": "Cấp vải cho Tổ cắt nhận trong 24h, chấm QC 9 bước trên điện thoại, giao 2 cơ sở, tự nhắc xuất BBNT/VietQR và tính lãi lỗ lô hàng."
+      }
+    ]
+  },
+  "participants": [
+    {
+      "id": "bv-tam-an",
+      "type": "frontend",
+      "label": "BV Đa Khoa Tâm An",
+      "sublabel": "Đặt 400 Bộ (3 Mẫu Áo)"
+    },
+    {
+      "id": "nvkd-govap",
+      "type": "frontend",
+      "label": "Kinh Doanh (NVKD)",
+      "sublabel": "Phễu, QR & Báo Giá (M2–M3)"
+    },
+    {
+      "id": "khsx-rap",
+      "type": "backend",
+      "label": "KHSX & Kỹ Thuật Rập",
+      "sublabel": "Lịch 3 Tháng & Rập (M6–M8)"
+    },
+    {
+      "id": "mua-hang-kho",
+      "type": "backend",
+      "label": "Mua Hàng & Kho NPL",
+      "sublabel": "Gộp Vải & Cấp Phát (M8–M9)"
+    },
+    {
+      "id": "to-cat-may-qc",
+      "type": "security",
+      "label": "7 Tổ SX & Kiểm Hàng QC",
+      "sublabel": "Cắt, May, Thêu & QC 9 Bước"
+    },
+    {
+      "id": "ke-toan-ai",
+      "type": "database",
+      "label": "Kế Toán & Trợ Lý AI",
+      "sublabel": "Chị Liên · VietQR & Giá Lô"
+    }
+  ],
+  "segments": [
+    {
+      "from": 145,
+      "to": 325,
+      "label": "CHẶNG 1 (B01–B06): HỎI MUA, TRA NGÀY GIAO <5 PHÚT, CHỐT HỢP ĐỒNG 3 MẪU & NHẬN CỌC VIETQR"
+    },
+    {
+      "from": 340,
+      "to": 510,
+      "label": "CHẶNG 2 (B07–B11): TỰ SINH LỆNH SX, XẾP LỊCH 3 NHÓM THỢ, PHÁT PHIẾU 7 TỔ & GỘP MUA VẢI NCC"
+    },
+    {
+      "from": 525,
+      "to": 695,
+      "label": "CHẶNG 3 (B12–B15): CẤP VẢI TỔ CẮT (24H), MAY - IN THÊU, CHẤM QC 9 BƯỚC & ĐÓNG BAO GIAO"
+    },
+    {
+      "from": 710,
+      "to": 890,
+      "label": "CHẶNG 4 (B16–B20): GIAO 2 CƠ SỞ, TỰ NHẮC BBNT/VIETQR, TÍNH LÃI LỖ LÔ (THAY FAST) & AI BÁO CÁO"
+    }
+  ],
+  "messages": [
+    {
+      "id": "m01",
+      "from": "bv-tam-an",
+      "to": "nvkd-govap",
+      "y": 170,
+      "label": "B01–B02: Đặt 400 bộ (3 mẫu áo) · Quét QR mẫu",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m02",
+      "from": "nvkd-govap",
+      "to": "khsx-rap",
+      "y": 204,
+      "label": "B02–B03: Tự tra ngày giao <5p & Giao làm mẫu/mượn mẫu",
+      "variant": "default"
+    },
+    {
+      "id": "m03",
+      "from": "nvkd-govap",
+      "to": "bv-tam-an",
+      "y": 238,
+      "label": "B04–B05: Gửi báo giá & Hợp đồng (giao Q3 & Thủ Đức)",
+      "variant": "return"
+    },
+    {
+      "id": "m04",
+      "from": "bv-tam-an",
+      "to": "ke-toan-ai",
+      "y": 272,
+      "label": "B06a: Bệnh viện quét mã VietQR trên Đề nghị thanh toán để chuyển tiền đặt cọc",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m05",
+      "from": "ke-toan-ai",
+      "to": "nvkd-govap",
+      "y": 308,
+      "label": "B06b [Chốt chặn 3 & 4]: Kế toán bấm 'Đã nhận cọc' -> KHÓA CỨNG nút sửa đơn của NVKD",
+      "variant": "security"
+    },
+    {
+      "id": "m06",
+      "from": "ke-toan-ai",
+      "to": "khsx-rap",
+      "y": 366,
+      "label": "B07: Tự động sinh Lệnh sản xuất (không cần gõ lại File TĐSX) & Nạp mã rập, định mức vải/nút",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m07",
+      "from": "khsx-rap",
+      "to": "to-cat-may-qc",
+      "y": 402,
+      "label": "B08–B09: Xếp lịch 3 tháng (ưu tiên thợ xưởng & thợ nhà trước vệ tinh) & Phát Phiếu xuống 7 tổ",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m08",
+      "from": "khsx-rap",
+      "to": "mua-hang-kho",
+      "y": 440,
+      "label": "B10 [Chốt chặn 5]: Tự tách vải kate trắng, kaki xanh & Duyệt mua online",
+      "variant": "security"
+    },
+    {
+      "id": "m09",
+      "from": "mua-hang-kho",
+      "to": "ke-toan-ai",
+      "y": 482,
+      "label": "B10–B11: Gộp đơn đặt NCC; vải đạt co rút -> Gắn chi phí vải vào lô",
+      "variant": "default"
+    },
+    {
+      "id": "m10",
+      "from": "mua-hang-kho",
+      "to": "to-cat-may-qc",
+      "y": 552,
+      "label": "B12 [Chốt chặn 6]: Xuất vải -> Tổ cắt bấm nhận việc trong 24h",
+      "variant": "security"
+    },
+    {
+      "id": "m11",
+      "from": "to-cat-may-qc",
+      "to": "khsx-rap",
+      "y": 592,
+      "label": "B13: Cắt -> May -> Thêu -> Ủi; bấm tiến độ & mã lỗi trên ĐT",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m12",
+      "from": "to-cat-may-qc",
+      "to": "nvkd-govap",
+      "y": 632,
+      "label": "B14 [Chốt chặn 7]: Kiểm 100% thành phẩm (Final QC) trước giao 2 ngày & Tải ảnh nghiệm thu",
+      "variant": "security"
+    },
+    {
+      "id": "m13",
+      "from": "to-cat-may-qc",
+      "to": "ke-toan-ai",
+      "y": 672,
+      "label": "B15: Đóng bao Q3 & Thủ Đức · Tự sinh Báo cáo SX tuần",
+      "variant": "default"
+    },
+    {
+      "id": "m14",
+      "from": "nvkd-govap",
+      "to": "bv-tam-an",
+      "y": 736,
+      "label": "B16: Giao hàng 2 cơ sở, chụp biên nhận -> Bấm Đã giao",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m15",
+      "from": "ke-toan-ai",
+      "to": "bv-tam-an",
+      "y": 774,
+      "label": "B17: Tự nhắc Kế toán xuất Hóa đơn, BBNT & Đề nghị thanh toán (trừ cọc) kèm mã VietQR gửi khách",
+      "variant": "emphasis"
+    },
+    {
+      "id": "m16",
+      "from": "bv-tam-an",
+      "to": "ke-toan-ai",
+      "y": 812,
+      "label": "B18–B19: Bệnh viện thanh toán nốt -> Chị Liên bấm tính Giá thành lô 400 bộ & Xuất 8 báo cáo (thay FAST)",
+      "variant": "security"
+    },
+    {
+      "id": "m17",
+      "from": "ke-toan-ai",
+      "to": "nvkd-govap",
+      "y": 856,
+      "label": "B20: Tự nhắc gọi CSKH mốc 3 ngày / 1 tháng / 3 tháng, chấm KPI/hoa hồng & Giám đốc hỏi AI tiếng Việt",
+      "variant": "dashed"
+    }
+  ],
+  "activations": [
+    {
+      "participant": "nvkd-govap",
+      "from": 165,
+      "to": 315,
+      "type": "frontend"
+    },
+    {
+      "participant": "khsx-rap",
+      "from": 360,
+      "to": 450,
+      "type": "backend"
+    },
+    {
+      "participant": "to-cat-may-qc",
+      "from": 545,
+      "to": 680,
+      "type": "security"
+    },
+    {
+      "participant": "ke-toan-ai",
+      "from": 765,
+      "to": 865,
+      "type": "database"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Ví Dụ Thực Tế Xuyên Suốt: Đơn Hàng 400 Bộ Đồng Phục Bệnh Viện Đa Khoa Tâm An",
+      "items": [
+        "1 đơn hàng chứa 3 mẫu khác nhau: 100 áo blouse bác sĩ (kate silk trắng, thêu logo ngực trái), 200 bộ điều dưỡng (kaki thun xanh, viền cổ) và 100 áo sơ mi hành chính.",
+        "Gắn sẵn 2 địa chỉ giao ngay từ Bước B05: Áo bác sĩ + điều dưỡng giao Cơ sở 1 (Quận 3), áo sơ mi hành chính giao Cơ sở 2 (Thủ Đức)."
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Xóa Bỏ 100% Thao Tác Chép Tay Giữa Kinh Doanh, Xưởng, Mua Hàng & Kế Toán",
+      "items": [
+        "Ở Bước B07: Không còn tốn 60 phút lập File TĐSX và 30 phút chép lại sang Google Drive. Ở Bước B10: Không còn tốn 1–3 giờ lội nhóm Zalo chuyển tiền để lập File Duyệt mua hàng.",
+        "Ở Bước B15 & B19: Không còn ngồi tô màu chữ ĐEN -> XANH chiều Thứ Sáu hay gom tay chi phí vải, nút, công thợ nhập lại vào phần mềm FAST."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "f54104e4-aa1c-4929-8509-608c9260b130",
+  "status": "current",
+  "command": "deliver",
+  "type": "workflow",
+  "input": "/Users/hungnpv/Downloads/Sunext/Sunext-Agent-GG/dong-phuc-hoa-tay-mini-erp/sources/02-hoa-tay-4-chang-7-chot-chan-workflow.json",
+  "output": "/Users/hungnpv/Downloads/Sunext/Sunext-Agent-GG/dong-phuc-hoa-tay-mini-erp/02-hoa-tay-4-chang-7-chot-chan-workflow.html",
+  "specification": {
+    "sha256": "7a0e2a24b5142eb195880f76ada42330439c640a61f1bd97152fb77e3f4ef52f",
+    "bytes": 7981
+  },
+  "artifact": {
+    "sha256": "c69dc813e66578de93c82c3442ea49cfa334479a7f3f84d29f3551e75ebd8bb6",
+    "bytes": 833124
+  }
+}

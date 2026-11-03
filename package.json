@@ -1,0 +1,10 @@
+{
+  "name": "dong-phuc-hoa-tay-mini-erp-archify",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Đề Xuất Phương Án Xây Dựng Hệ Thống Quản Lý Điều Hành — Công Ty Cổ Phần Thời Trang Đồng Phục Hoa Tay (1 Sổ Gốc Duy Nhất · 4 Chặng Đường · 7 Chốt Chặn Tự Động — Archify Showcase Suite)",
+  "scripts": {
+    "build": "echo 'Static HTML bundle ready for GitHub Pages and Vercel'",
+    "start": "npx serve ."
+  }
+}

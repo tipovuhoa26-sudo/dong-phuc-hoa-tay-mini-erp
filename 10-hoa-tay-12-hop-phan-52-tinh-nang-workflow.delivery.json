@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "81c3638b-6401-409f-b248-dd704d908b46",
+  "status": "current",
+  "command": "deliver",
+  "type": "workflow",
+  "input": "/Users/hungnpv/Downloads/Sunext/Sunext-Agent-GG/dong-phuc-hoa-tay-mini-erp/sources/10-hoa-tay-12-hop-phan-52-tinh-nang-workflow.json",
+  "output": "/Users/hungnpv/Downloads/Sunext/Sunext-Agent-GG/dong-phuc-hoa-tay-mini-erp/10-hoa-tay-12-hop-phan-52-tinh-nang-workflow.html",
+  "specification": {
+    "sha256": "5d04855e15aad1bb904f025518c2e03056e9e2b7f72121387b2cc2ab51e5ff08",
+    "bytes": 7812
+  },
+  "artifact": {
+    "sha256": "33108d6314362e62887414979ea85127919ec342de4c569799b0da51b02c0fe8",
+    "bytes": 833795
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "05dda968-a5f9-4299-8fe6-5bf1bca7ca4a",
+  "status": "current",
+  "command": "deliver",
+  "type": "architecture",
+  "input": "/Users/hungnpv/Downloads/Sunext/Sunext-Agent-GG/dong-phuc-hoa-tay-mini-erp/sources/01-hoa-tay-mini-erp-1-so-goc-architecture.json",
+  "output": "/Users/hungnpv/Downloads/Sunext/Sunext-Agent-GG/dong-phuc-hoa-tay-mini-erp/01-hoa-tay-mini-erp-1-so-goc-architecture.html",
+  "specification": {
+    "sha256": "cddd68d4765f3070a26c15ea289be50964623803f0cfb68337c64f7a0e55b406",
+    "bytes": 12733
+  },
+  "artifact": {
+    "sha256": "fb72ef4da0c16a69c230004771e9d483573c3547275d3976ed32540a9942797a",
+    "bytes": 854750
+  }
+}

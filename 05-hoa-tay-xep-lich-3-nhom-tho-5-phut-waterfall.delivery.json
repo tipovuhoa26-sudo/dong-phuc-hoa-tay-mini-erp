@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "0d3882c1-bb1b-454a-bbe0-9940401bee61",
+  "status": "current",
+  "command": "deliver",
+  "type": "waterfall",
+  "input": "/Users/hungnpv/Downloads/Sunext/Sunext-Agent-GG/dong-phuc-hoa-tay-mini-erp/sources/05-hoa-tay-xep-lich-3-nhom-tho-5-phut-waterfall.json",
+  "output": "/Users/hungnpv/Downloads/Sunext/Sunext-Agent-GG/dong-phuc-hoa-tay-mini-erp/05-hoa-tay-xep-lich-3-nhom-tho-5-phut-waterfall.html",
+  "specification": {
+    "sha256": "21798a7302724ad35b07ca6f61a68421261ac012688eade6b464e29c53db6315",
+    "bytes": 6607
+  },
+  "artifact": {
+    "sha256": "fabc975533312cf02e965560c9a6c8790af3bd10459cbcc310a15f14694f8746",
+    "bytes": 827546
+  }
+}

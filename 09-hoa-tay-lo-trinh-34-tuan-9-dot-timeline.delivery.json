@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "f3a95d0f-20c5-456e-8689-1bd82fcc29d4",
+  "status": "current",
+  "command": "deliver",
+  "type": "timeline",
+  "input": "/Users/hungnpv/Downloads/Sunext/Sunext-Agent-GG/dong-phuc-hoa-tay-mini-erp/sources/09-hoa-tay-lo-trinh-34-tuan-9-dot-timeline.json",
+  "output": "/Users/hungnpv/Downloads/Sunext/Sunext-Agent-GG/dong-phuc-hoa-tay-mini-erp/09-hoa-tay-lo-trinh-34-tuan-9-dot-timeline.html",
+  "specification": {
+    "sha256": "a21cc7928b0a6d48fea7ffa9e7ebbc1c111e14874fb4d6022e5dd850b7c0ee4e",
+    "bytes": 6812
+  },
+  "artifact": {
+    "sha256": "1aea39b5e978ff94438e9ae7a343eb43c98cd6f4e061a8795a00813b402cdf02",
+    "bytes": 829377
+  }
+}

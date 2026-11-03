@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "2fd8802c-f0a4-41f3-948d-564224d6b862",
+  "status": "current",
+  "command": "deliver",
+  "type": "erd",
+  "input": "/Users/hungnpv/Downloads/Sunext/Sunext-Agent-GG/dong-phuc-hoa-tay-mini-erp/sources/08-hoa-tay-so-goc-lien-thong-erd.json",
+  "output": "/Users/hungnpv/Downloads/Sunext/Sunext-Agent-GG/dong-phuc-hoa-tay-mini-erp/08-hoa-tay-so-goc-lien-thong-erd.html",
+  "specification": {
+    "sha256": "08fd7d93f27268fdc7e113cef1b90abe0769477f7e60275ff0dd49249a1f354a",
+    "bytes": 7365
+  },
+  "artifact": {
+    "sha256": "f9114f8712798dd245bbbf282e221b8fef4292779ea1146ed5dc8edd7492ee26",
+    "bytes": 842596
+  }
+}

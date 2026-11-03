@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "e85c71a5-d0a2-4432-98f0-43e048f8d959",
+  "status": "current",
+  "command": "deliver",
+  "type": "explainer",
+  "input": "/Users/hungnpv/Downloads/Sunext/Sunext-Agent-GG/dong-phuc-hoa-tay-mini-erp/sources/hoa-tay-mini-erp-operating-blueprint.archify.md",
+  "output": "/Users/hungnpv/Downloads/Sunext/Sunext-Agent-GG/dong-phuc-hoa-tay-mini-erp/index.html",
+  "specification": {
+    "sha256": "e6f4441a7e7458504c10a89c9dd9f88a6423cdcdbb0f9e27bd78a9f7b37488de",
+    "bytes": 75514
+  },
+  "artifact": {
+    "sha256": "39ccd0fe11c932a2bd538541e22e80510dc18b094df31a7ff448b61bc6578dbf",
+    "bytes": 5013697
+  },
+  "explainer": {
+    "preparedSha256": "e7a1250111ffa890eb8d2c62b91e25b658a5efa1695f29306638d0d6ed4eb0b2",
+    "dependencies": [
+      {
+        "kind": "data",
+        "id": "chart-time-saved",
+        "path": "/Users/hungnpv/Downloads/Sunext/Sunext-Agent-GG/dong-phuc-hoa-tay-mini-erp/sources/hoa-tay-time-saved-comparison.csv",
+        "sha256": "efcab7564e55813cac3da4810540876fba8cd5cca8366fddfabdc5672106d0a9",
+        "bytes": 352
+      },
+      {
+        "kind": "data",
+        "id": "chart-12-modules-cost",
+        "path": "/Users/hungnpv/Downloads/Sunext/Sunext-Agent-GG/dong-phuc-hoa-tay-mini-erp/sources/hoa-tay-12-modules-cost-breakdown.csv",
+        "sha256": "31b97a2edf92e65372d104d9cd33ea0cf130c463dd84e3d034c5a7a3025e0368",
+        "bytes": 815
+      },
+      {
+        "kind": "data",
+        "id": "chart-9-payment-gates",
+        "path": "/Users/hungnpv/Downloads/Sunext/Sunext-Agent-GG/dong-phuc-hoa-tay-mini-erp/sources/hoa-tay-9-payment-milestones.csv",
+        "sha256": "57931a3b5fba5d006cb6b23a36d42d53f25626dae1bdb79c5f151494a2e22804",
+        "bytes": 598
+      },
+      {
+        "kind": "diagram-spec",
+        "id": "arch-1-so-goc",
+        "path": "/Users/hungnpv/Downloads/Sunext/Sunext-Agent-GG/dong-phuc-hoa-tay-mini-erp/sources/01-hoa-tay-mini-erp-1-so-goc-architecture.json",
+        "relativePath": "01-hoa-tay-mini-erp-1-so-goc-architecture.json",
+        "sha256": "cddd68d4765f3070a26c15ea289be50964623803f0cfb68337c64f7a0e55b406",
+        "bytes": 12733
+      },
+      {
+        "kind": "diagram-spec",
+        "id": "wf-4-chang-7-gates",
+        "path": "/Users/hungnpv/Downloads/Sunext/Sunext-Agent-GG/dong-phuc-hoa-tay-mini-erp/sources/02-hoa-tay-4-chang-7-chot-chan-workflow.json",
+        "relativePath": "02-hoa-tay-4-chang-7-chot-chan-workflow.json",
+        "sha256": "7a0e2a24b5142eb195880f76ada42330439c640a61f1bd97152fb77e3f4ef52f",
+        "bytes": 7981
+      },
+      {
+        "kind": "diagram-spec",
+        "id": "lc-7-trang-thai",
+        "path": "/Users/hungnpv/Downloads/Sunext/Sunext-Agent-GG/dong-phuc-hoa-tay-mini-erp/sources/04-hoa-tay-vong-doi-don-hang-7-trang-thai-lifecycle.json",
+        "relativePath": "04-hoa-tay-vong-doi-don-hang-7-trang-thai-lifecycle.json",
+        "sha256": "5c9977969a8660d175cb666276bf4e5958aa3a630fb37dd9b817d669b793405d",
+        "bytes": 6689
+      },
+      {
+        "kind": "diagram-spec",
+        "id": "seq-20-buoc-tam-an",
+        "path": "/Users/hungnpv/Downloads/Sunext/Sunext-Agent-GG/dong-phuc-hoa-tay-mini-erp/sources/03-hoa-tay-20-buoc-benh-vien-tam-an-sequence.json",
+        "relativePath": "03-hoa-tay-20-buoc-benh-vien-tam-an-sequence.json",
+        "sha256": "e4455405a53c464b1b5bb914de05980e3fb390af5659fe3e54c0970a470cf8bc",
+        "bytes": 8820
+      },
+      {
+        "kind": "diagram-spec",
+        "id": "wf-tra-giao-5-phut",
+        "path": "/Users/hungnpv/Downloads/Sunext/Sunext-Agent-GG/dong-phuc-hoa-tay-mini-erp/sources/05-hoa-tay-xep-lich-3-nhom-tho-5-phut-waterfall.json",
+        "relativePath": "05-hoa-tay-xep-lich-3-nhom-tho-5-phut-waterfall.json",
+        "sha256": "21798a7302724ad35b07ca6f61a68421261ac012688eade6b464e29c53db6315",
+        "bytes": 6607
+      },
+      {
+        "kind": "diagram-spec",
+        "id": "df-vai-vietqr-gia-lo",
+        "path": "/Users/hungnpv/Downloads/Sunext/Sunext-Agent-GG/dong-phuc-hoa-tay-mini-erp/sources/06-hoa-tay-gop-mua-vai-tinh-gia-thanh-lo-dataflow.json",
+        "relativePath": "06-hoa-tay-gop-mua-vai-tinh-gia-thanh-lo-dataflow.json",
+        "sha256": "b8387e1d4b5bfbda31f3d12dd95597c9fdf83482951673e13e70a8146b5d0564",
+        "bytes": 8574
+      },
+      {
+        "kind": "diagram-spec",
+        "id": "erd-6-ngan-so-goc",
+        "path": "/Users/hungnpv/Downloads/Sunext/Sunext-Agent-GG/dong-phuc-hoa-tay-mini-erp/sources/08-hoa-tay-so-goc-lien-thong-erd.json",
+        "relativePath": "08-hoa-tay-so-goc-lien-thong-erd.json",
+        "sha256": "08fd7d93f27268fdc7e113cef1b90abe0769477f7e60275ff0dd49249a1f354a",
+        "bytes": 7365
+      },
+      {
+        "kind": "diagram-spec",
+        "id": "tr-9-vi-tri-mobile",
+        "path": "/Users/hungnpv/Downloads/Sunext/Sunext-Agent-GG/dong-phuc-hoa-tay-mini-erp/sources/07-hoa-tay-9-vi-tri-phan-quyen-mobile-tree.json",
+        "relativePath": "07-hoa-tay-9-vi-tri-phan-quyen-mobile-tree.json",
+        "sha256": "6159aec53b7bd2a8a6df7a49ffb9da047fdfcccc610ec55a30c60f4a40231cb4",
+        "bytes": 5093
+      },
+      {
+        "kind": "diagram-spec",
+        "id": "wf-12-hop-phan",
+        "path": "/Users/hungnpv/Downloads/Sunext/Sunext-Agent-GG/dong-phuc-hoa-tay-mini-erp/sources/10-hoa-tay-12-hop-phan-52-tinh-nang-workflow.json",
+        "relativePath": "10-hoa-tay-12-hop-phan-52-tinh-nang-workflow.json",
+        "sha256": "5d04855e15aad1bb904f025518c2e03056e9e2b7f72121387b2cc2ab51e5ff08",
+        "bytes": 7812
+      },
+      {
+        "kind": "diagram-spec",
+        "id": "tl-34-tuan-9-dot",
+        "path": "/Users/hungnpv/Downloads/Sunext/Sunext-Agent-GG/dong-phuc-hoa-tay-mini-erp/sources/09-hoa-tay-lo-trinh-34-tuan-9-dot-timeline.json",
+        "relativePath": "09-hoa-tay-lo-trinh-34-tuan-9-dot-timeline.json",
+        "sha256": "a21cc7928b0a6d48fea7ffa9e7ebbc1c111e14874fb4d6022e5dd850b7c0ee4e",
+        "bytes": 6812
+      }
+    ]
+  }
+}

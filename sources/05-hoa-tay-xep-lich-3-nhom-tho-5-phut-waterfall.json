@@ -1,0 +1,138 @@
+{
+  "schema_version": 1,
+  "diagram_type": "waterfall",
+  "meta": {
+    "title": "Giải Phẫu \"Tra Ngày Giao Hàng Dưới 5 Phút\" (180 Giây): Xếp Lịch Hữu Hạn 3 Nhóm Thợ (SV-12, SV-13)",
+    "output": "dong-phuc-hoa-tay-mini-erp/05-hoa-tay-xep-lich-3-nhom-tho-5-phut-waterfall.html",
+    "quality_profile": "showcase",
+    "evidence": "illustrative",
+    "unit": "s",
+    "views": [
+      {
+        "id": "quet-qr-va-kiem-tra-nang-luc",
+        "label": "1. Quét QR & Quét Lịch 3 Tháng (0 -> 90 Giây)",
+        "focus": [
+          "sp-total-5min",
+          "sp-1-qr-input",
+          "sp-2-bom-leadtime",
+          "sp-3-scan-3months"
+        ],
+        "note": "Trong 90 giây đầu: NVKD quét mã QR trên áo mẫu, nhập số lượng 400 bộ, máy tự động nạp định mức giờ công may và quét bảng kế hoạch 3 tháng."
+      },
+      {
+        "id": "uu-tien-3-nhom-tho-va-chot-ngay",
+        "label": "2. Ưu Tiên 3 Nhóm Thợ & Báo Ngày (90 -> 180s)",
+        "focus": [
+          "sp-total-5min",
+          "sp-4-tho-xuong",
+          "sp-5-tho-nha",
+          "sp-6-ve-tinh",
+          "sp-7-return-date"
+        ],
+        "note": "Trong 90 giây sau: Thuật toán ưu tiên lấp đầy lịch cho Thợ tại xưởng Hóc Môn và Thợ may tại nhà trước, phần vượt mới chia ra Vệ tinh."
+      }
+    ]
+  },
+  "layout": {
+    "width": 680
+  },
+  "spans": [
+    {
+      "id": "sp-total-5min",
+      "name": "NVKD Tự Tra Ngày Giao Khả Thi Cho Đơn 400 Bộ BV Tâm An (180s = 3 Phút < 5 Phút)",
+      "start": 0,
+      "duration": 180,
+      "status": "ok",
+      "service": "Hoa Tay Promising Engine",
+      "detail": "Rút ngắn thời gian báo ngày giao hàng cho khách B2B từ 48 giờ (2 ngày chờ hỏi Xưởng, Rập, Mua hàng) xuống chỉ còn 180 giây (3 phút, cam kết nghiệm thu < 5 phút)."
+    },
+    {
+      "id": "sp-1-qr-input",
+      "parent": "sp-total-5min",
+      "name": "1. Quét Mã QR Áo Mẫu Bằng Điện Thoại & Nhập Số Lượng 400 Bộ (SV-22)",
+      "start": 0,
+      "duration": 25,
+      "status": "ok",
+      "service": "Mobile QR & Catalog",
+      "detail": "Tại phòng trưng bày hoặc khi đi gặp khách, NVKD dùng camera điện thoại quét QR lấy ngay thông số mẫu áo blouse, điều dưỡng, sơ mi và nhập số lượng."
+    },
+    {
+      "id": "sp-2-bom-leadtime",
+      "parent": "sp-total-5min",
+      "name": "2. Nạp Định Mức Giờ Công May & Thời Gian Chờ Vải Về Xưởng (SV-34, SV-39)",
+      "start": 25,
+      "duration": 30,
+      "status": "ok",
+      "service": "BOM & Leadtime DB",
+      "detail": "Tự động quy đổi 400 bộ đồng phục ra tổng giờ công cắt, may, thêu logo và cộng thời gian cung ứng vải chuẩn (3 ngày với vải có sẵn)."
+    },
+    {
+      "id": "sp-3-scan-3months",
+      "parent": "sp-total-5min",
+      "name": "3. Quét Bảng Kế Hoạch SX 3 Tháng: Đơn Chắc Chắn vs Đơn Dự Kiến (SV-21)",
+      "start": 55,
+      "duration": 35,
+      "status": "ok",
+      "service": "3-Month Horizon Planner",
+      "detail": "Đọc toàn bộ lịch bận 3 tháng tới của xưởng, tách bạch rõ những đơn đã nhận cọc chắc chắn và các báo giá đang thương lượng."
+    },
+    {
+      "id": "sp-4-tho-xuong",
+      "parent": "sp-total-5min",
+      "name": "4. Ưu Tiên Số 1: Xếp Kín Giờ Công Trống Của Thợ Tại Xưởng Hóc Môn (SV-08, SV-12)",
+      "start": 90,
+      "duration": 30,
+      "status": "ok",
+      "service": "Nhóm 1: Thợ Tại Xưởng",
+      "detail": "Áp dụng ràng buộc mềm 'Đủ việc cho thợ nhà': tự động phân bổ các mẫu đòi hỏi kỹ thuật cao (100 áo blouse bác sĩ) vào lịch trống của thợ tại xưởng Hóc Môn."
+    },
+    {
+      "id": "sp-5-tho-nha",
+      "parent": "sp-total-5min",
+      "name": "5. Ưu Tiên Số 2: Xếp Tiếp Cho Nhóm Thợ Nhận Đồ Về May Tại Nhà (SV-08, SV-12)",
+      "start": 120,
+      "duration": 25,
+      "status": "ok",
+      "service": "Nhóm 2: Thợ May Tại Nhà",
+      "detail": "Lấp đầy năng lực của đội ngũ thợ nhận bán thành phẩm về may tại nhà trước khi tính đến phương án thuê ngoài."
+    },
+    {
+      "id": "sp-6-ve-tinh",
+      "parent": "sp-total-5min",
+      "name": "6. Ưu Tiên Số 3: Phần Vượt Sức Chứa Mới Chia Sang Xưởng Vệ Tinh Ngoài (SV-12, SV-14)",
+      "start": 145,
+      "duration": 20,
+      "status": "ok",
+      "service": "Nhóm 3: Vệ Tinh Ngoài",
+      "detail": "Chỉ đẩy phần sản lượng vượt quá sức thợ nhà sang các xưởng vệ tinh bên ngoài; đồng thời bật cảnh báo đỏ nếu tuần nào bị quá tải."
+    },
+    {
+      "id": "sp-7-return-date",
+      "parent": "sp-total-5min",
+      "name": "7. Hiển Thị Ngay Ngày Giao Hàng Khả Thi & Cho Phép Mô Phỏng Chèn Đơn (SV-13, SV-14)",
+      "start": 165,
+      "duration": 15,
+      "status": "ok",
+      "service": "Self-Service Date UI",
+      "detail": "Trả kết quả ngày giao chính xác lên màn hình điện thoại để NVKD chốt ngay với khách (chuẩn SOP Hoa Tay: <100 cái giao 12 ngày, 100–500 cái giao 20 ngày)."
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Tạm Biệt Cảnh Chờ 2 Ngày Mới Báo Được Ngày Giao Hàng Cho Khách",
+      "items": [
+        "Trước đây: Khi khách hỏi 'Đặt 400 bộ áo bệnh viện thì ngày nào giao được?', NVKD phải gửi bảng tính hỏi KHSX, Kỹ thuật rập và Mua hàng, mất tới 2 ngày (48 giờ) khách mới có câu trả lời.",
+        "Trên Hoa Tay Mini-ERP: NVKD tự bấm nút 'Kiểm tra ngày giao' ngay lúc đang ngồi với khách và nhận câu trả lời khả thi trong dưới 5 phút (minh họa 180 giây)."
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "Ràng Buộc Vàng \"Ưu Tiên Đủ Việc Cho Thợ Nhà Trước Vệ Tinh\" & Mô Phỏng Chèn Đơn",
+      "items": [
+        "Tránh tuyệt đối tình trạng giao việc ra vệ tinh bên ngoài trong khi thợ tại xưởng Hóc Môn và thợ may tại nhà lại ngồi chờ việc.",
+        "Khi có đơn gấp cần chèn vào hoặc có thợ nghỉ đột xuất, Giám đốc xưởng bấm 'Chạy thử phương án' (SV-14) để thấy ngay đơn nào bị đẩy trễ trước khi quyết định."
+      ]
+    }
+  ]
+}
